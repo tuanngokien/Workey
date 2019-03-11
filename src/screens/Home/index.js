@@ -1,3 +1,14 @@
-import HomeScreen from "./Home";
+import CategoriesScreen from "./Categories";
 
-export default HomeScreen;
+import {createStackNavigator, createAppContainer} from "react-navigation";
+
+const RootStack = createStackNavigator(
+    {
+        Categories: CategoriesScreen,
+    },
+    {
+        initialRouteName: 'Categories',
+    }
+);
+
+export default createAppContainer(RootStack);
