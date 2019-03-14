@@ -9,52 +9,52 @@ import MediaIcon from "../../assets/images/icons/media.png";
 
 const JobList = [
     {
-        title: "Design",
+        titleContainer: "Design",
         subTitle: "8000+ jobs",
         src: DesignIcon,
-        shadeColor: "rgba(121,134,198,0.1)",
+        shadeColor: "rgba(121,134,198,0.25)",
     },
     {
-        title: "IT",
+        titleContainer: "IT",
         subTitle: "8000+ jobs",
         src: ItIcon,
-        shadeColor: "rgba(124,184,50,0.1)",
+        shadeColor: "rgba(124,184,50,0.25)",
     },
     {
-        title: "Marketing",
+        titleContainer: "Marketing",
         subTitle: "8000+ jobs",
         src: MarketingIcon,
-        shadeColor: "rgba(253,188,90,0.1)",
+        shadeColor: "rgba(253,188,90,0.25)",
     },
     {
-        title: "Medical",
+        titleContainer: "Medical",
         subTitle: "8000+ jobs",
         src: MedicalIcon,
-        shadeColor: "rgba(239,78,138,0.1)",
+        shadeColor: "rgba(239,78,138,0.25)",
     },
     {
-        title: "Banking",
+        titleContainer: "Banking",
         subTitle: "8000+ jobs",
         src: BankingIcon,
-        shadeColor: "rgba(30,152,212,0.1)",
+        shadeColor: "rgba(30,152,212,0.25)",
     },
     {
-        title: "Teaching",
+        titleContainer: "Teaching",
         subTitle: "8000+ jobs",
         src: TeachingIcon,
-        shadeColor: "rgba(255,170,119,0.1)",
+        shadeColor: "rgba(255,170,119,0.25)",
     },
     {
-        title: "Science",
+        titleContainer: "Science",
         subTitle: "8000+ jobs",
         src: EngineeringIcon,
-        shadeColor: "rgba(115,100,248,0.1)",
+        shadeColor: "rgba(115,100,248,0.25)",
     },
     {
-        title: "Media",
+        titleContainer: "Media",
         subTitle: "8000+ jobs",
         src: MediaIcon,
-        shadeColor: "rgba(120,222,184,0.1)",
+        shadeColor: "rgba(120,222,184,0.25)",
     },
 ];
 
