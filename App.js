@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 import {View, Text, StatusBar} from 'react-native';
 import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from "./src/screens/Home";
@@ -17,6 +19,8 @@ const TabNavigator = createBottomTabNavigator({
         [TABS.Inbox]: InboxScreen,
         [TABS.Settings]: SettingsScreen,
     }, {
+        swipeEnabled: true,
+        animationEnabled: true,
         defaultNavigationOptions: ({navigation}) => ({
             tabBarIcon: ({focused, tintColor}) => {
                 const {routeName} = navigation.state;
@@ -37,7 +41,8 @@ const TabNavigator = createBottomTabNavigator({
 ;
 
 const AppContainer = createAppContainer(TabNavigator);
-
+var SQLite = require('react-native-sqlite-storage');
+export const db = SQLite.openDatabase({name:"user",createFromLocation:"~workey.db"})
 export default class App extends React.Component {
   render() {
     return <AppContainer />;
