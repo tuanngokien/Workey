@@ -12,7 +12,9 @@
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-remote-svg": "^1.4.2",
+    "react-native-sqlite-storage": "^3.3.10",
     "react-native-svg": "^9.3.3",
+    "react-native-ui-kitten": "^3.1.2",
     "react-native-vector-icons": "^6.3.0",
     "react-navigation": "^3.3.2"
   },
@@ -27,6 +29,8 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": [ "./src/assets/fonts/" ]
+    "assets": [
+      "./src/assets/fonts/"
+    ]
   }
 }
