@@ -9,7 +9,7 @@ let styles = StyleSheet.create({
             height: 5,
         },
         shadowRadius: 18,
-        elevation: 0.25,
+        elevation: 0.3,
         borderRadius: 10,
         width: 160,
         height: 170,
@@ -34,7 +34,7 @@ let styles = StyleSheet.create({
         width: 35,
         height: 35,
     },
-    title: {
+    titleContainer: {
         fontFamily: "Montserrat-Bold",
         color: "#0f0250",
         fontSize: 17,
