@@ -1,6 +1,11 @@
+let avatar4 = require("../../assets/images/avatar/avatar4.jpg");
 var Conversations = [
     {
-      withUserId: 1,
+      user :{
+          name : "Tobiichi Origami",
+          avatar : "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+          time : "5:55 PM"
+      },
       messages: [
         {
           id: 0,
@@ -41,7 +46,11 @@ var Conversations = [
         }],
     },
     {
-      withUserId: 5,
+        user :{
+            name : "LLL LL L",
+            avatar :"../../assets/images/avatar/avatar4.jpg",
+            time : "5:55 PM"
+        },
       messages: [
         {
           id: 0,
