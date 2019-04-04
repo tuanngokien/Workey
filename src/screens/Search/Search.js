@@ -1,12 +1,17 @@
 import React from "react";
-import {Text} from "react-native"
+import {SearchLandingContainer} from "../../containers/Landing";
+import SearchViewContainer from "../../containers/SearchView";
+import ScrollView from "../../components/ScrollView";
+import Divider from "../../components/Divider";
+import {View} from "react-native";
 
 class SearchScreen extends React.Component {
     render() {
         return (
-            <Text>
-                Search
-            </Text>
+            <ScrollView>
+                <SearchLandingContainer/>
+                <SearchViewContainer/>
+            </ScrollView>
         );
     }
 }

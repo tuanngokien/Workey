@@ -1,3 +1,5 @@
+import {Dimensions} from "react-native";
+
 export const TABS = {
     Home: "HOME",
     Inbox: "INBOX",
@@ -13,3 +15,5 @@ export const TABBAR_ICONS = {
     [TABS.Settings]: "settings",
     [TABS.Notification]: "bell",
 };
+
+export const DEVICE_WIDTH = Dimensions.get('window').width;
