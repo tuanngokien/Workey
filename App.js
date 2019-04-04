@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import {View, Text, StatusBar} from 'react-native';
 import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from "./src/screens/Home";
@@ -54,7 +53,7 @@ const TabNavigator = createBottomTabNavigator({
     [TABS.Inbox]: InboxScreen,
     [TABS.Settings]: SettingsScreen,
 }, {
-    initialRouteName: TABS.Home,
+    initialRouteName: TABS.Search,
     defaultNavigationOptions: ({navigation}) => ({
         tabBarIcon: ({focused, tintColor}) => {
             const {routeName} = navigation.state;
@@ -63,6 +62,7 @@ const TabNavigator = createBottomTabNavigator({
         }
     }),
     tabBarOptions: {
+        tabBarPosition: 'bottom',
         style: {
             height: 63,
             borderTopColor: "transparent",
