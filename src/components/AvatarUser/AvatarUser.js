@@ -13,10 +13,10 @@ import {
     RkTheme,
 } from 'react-native-ui-kitten'
 import {Avatar} from  "react-native-elements"
-let styles = RkStyleSheet.create(theme => ({
+let styles = StyleSheet.create({
     header: {
         alignItems: 'center',
-        paddingTop: 25,
+        paddingTop: 10,
         paddingBottom: 17,
         fontSize:20,
         fontFamily: "FontAwesome",
@@ -24,10 +24,18 @@ let styles = RkStyleSheet.create(theme => ({
         
     },
     bordered: {
-        borderBottomWidth: 1,
-        borderColor: theme.colors.border.base,
+        // borderBottomWidth: 1,
+        // borderColor: theme.colors.border.base,
+        zIndex:2,
+        marginTop:75,
     },
-}))
+    email :{
+        fontSize :10,
+        fontFamily:"FontAwesome",
+        color :"black",
+        alignItems :'center'
+    },
+})
 class AvatarUser extends React.Component{
     constructor(props){
         super(props);
@@ -54,7 +62,9 @@ class AvatarUser extends React.Component{
                     />
             </View>
             <View>
-                <Text style= {styles.header}>Chang James</Text>
+                {/* <Text style={styles.email}>{this.props.email}</Text> */}
+                <Text style= {styles.header}>{this.props.name}</Text>
+
             </View>
          </View>
      )
