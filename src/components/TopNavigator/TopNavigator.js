@@ -31,8 +31,10 @@ class TopNavigator extends React.Component {
                 />
                 <Image
                     source={WorkplaceLogo}
-                    style={{width: 35, height: 35, resizeMode: "contain"}}
+                    style={{width: 35, height: 35}}
+                    resizeMode={"contain"}
                 />
+
                 <Text style={finalTitleStyle}>
                     {title}
                 </Text>
