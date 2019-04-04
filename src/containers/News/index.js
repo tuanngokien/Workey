@@ -5,7 +5,7 @@ import NewsCard from "../../components/NewsCard";
 import {Data} from "./data";
 
 const styles = StyleSheet.create({
-    containerTitle: titleStyles.containerTitle,
+    titleContainer: titleStyles.titleContainer,
     newsContainer: {
         shadowColor: "rgba(115, 100, 248, 0.1)",
         shadowOffset: {
@@ -26,7 +26,7 @@ export default class NewsContainer extends React.Component {
     render() {
         return (
             <View>
-                <Text style={styles.containerTitle}>News</Text>
+                <Text style={styles.titleContainer}>News</Text>
                 <View style={styles.newsContainer}>
                     {Data.map((item, index) => (
                         <View key={index}>
@@ -35,7 +35,7 @@ export default class NewsContainer extends React.Component {
                                 margin: "5%",
                                 borderWidth: 0.5,
                                 borderColor: "rgb(218, 220, 224)"
-                            } : {}}></View>
+                            } : {}}/>
                         </View>
                     ))}
                 </View>
