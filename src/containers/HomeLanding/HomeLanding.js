@@ -1,6 +1,6 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
-import BaseLandingContainer from "./Base";
+import BaseLandingContainer from "../BaseLanding";
 import ActivityCard from "../../components/ActivityCard";
 
 const styles = StyleSheet.create({

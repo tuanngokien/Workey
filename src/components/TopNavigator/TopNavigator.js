@@ -16,6 +16,15 @@ const styles = StyleSheet.create({
         fontSize: 19,
         fontFamily: "Poppins-Bold",
         color: "#ffffff"
+    },
+    avatarContainer: {
+        borderRadius: 100,
+        borderWidth: 2,
+        borderColor: '#d6d7da'
+    },
+    overlayAvatarContainer: {
+        borderWidth: 2.5,
+        borderColor: 'transparent'
     }
 });
 
@@ -27,7 +36,8 @@ class TopNavigator extends React.Component {
         return (
             <View style={finalContainerStyle}>
                 <StatusBar
-                    backgroundColor="#7376FF"
+                    translucent
+                    backgroundColor="transparent"
                 />
                 <Image
                     source={WorkplaceLogo}
@@ -43,15 +53,8 @@ class TopNavigator extends React.Component {
                         rounded
                         source={require("../../assets/images/avatar/avatar5.jpeg")}
                         size={47}
-                        containerStyle={{
-                            borderRadius: 100,
-                            borderWidth: 2,
-                            borderColor: '#d6d7da'
-                        }}
-                        overlayContainerStyle={{
-                            borderWidth: 2.5,
-                            borderColor: 'transparent'
-                        }}
+                        containerStyle={styles.avatarContainer}
+                        overlayContainerStyle={styles.overlayAvatarContainer}
                     />
                 </View>
             </View>

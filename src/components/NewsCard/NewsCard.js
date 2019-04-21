@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
             height: 5,
         },
         shadowRadius: 18,
-        elevation: 2,
+        elevation: 1,
     },
     ordinalNumber: {
         fontFamily: "Nunito-Bold",

@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
         height: 70,
         flexDirection: "row",
         backgroundColor: "#ffffff",
-        shadowColor: "rgba(115, 100, 248, 0.1)",
         borderRadius: 12,
+        shadowColor: "rgba(115, 100, 248, 0.1)",
         shadowOffset: {
             width: -3,
             height: 5,
         },
         shadowRadius: 18,
-        elevation: 2,
+        elevation: 1,
     },
     titleContainer: {
         flex: 1,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     }
 });
 
-class JobCard extends React.Component {
+class EmployerCard extends React.Component {
     render() {
         const {name, logo, location, quantity} = this.props;
         return (
@@ -65,4 +65,4 @@ class JobCard extends React.Component {
     }
 }
 
-export default JobCard;
+export default EmployerCard;

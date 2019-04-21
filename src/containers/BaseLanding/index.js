@@ -14,8 +14,10 @@ const styles = StyleSheet.create({
 
 export default class BaseLandingContainer extends React.Component {
     render() {
+        const {source, style} = this.props;
+        const finalStyle = StyleSheet.flatten([styles.imageBackground, style])
         return (
-            <ImageBackground source={HomeBackground} style={styles.imageBackground}
+            <ImageBackground source={source || HomeBackground} style={finalStyle}
                              imageStyle={{borderBottomLeftRadius: 10, borderBottomRightRadius: 10}}>
                 <TopNavigator
                     containerStyle={{
