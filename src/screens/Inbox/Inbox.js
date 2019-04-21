@@ -11,7 +11,7 @@ import TopNavigator from "../../components/TopNavigator/TopNavigator"
 import { SearchBar } from "react-native-elements"
 import Conversations from "../Inbox/data"
 import { Avatar } from "react-native-elements"
-import BaseLandingContainer from "../../containers/Landing/Base"
+import BaseLandingContainer from "../../containers/BaseLanding"
 // import { FlatList } from "react-native-gesture-handler";
 
 let styles = StyleSheet.create({

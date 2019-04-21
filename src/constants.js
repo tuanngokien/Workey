@@ -17,3 +17,5 @@ export const TABBAR_ICONS = {
 };
 
 export const DEVICE_WIDTH = Dimensions.get('window').width;
+export const DEVICE_HEIGHT = Dimensions.get('window').height;
+export const MAIN_COLOR = "#07333C";

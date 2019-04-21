@@ -1,10 +1,9 @@
 import React from "react";
 import ScrollView from "../../components/ScrollView";
 import {Divider} from "../../components/Divider";
-import {HomeLandingContainer} from "../../containers/Landing";
+import HomeLandingContainer from "../../containers/HomeLanding";
 import TopEmployersContainer from "../../containers/TopEmployers";
 import NewsContainer from "../../containers/News";
-import ProfileViewContainer from "../../containers/ProfileView";
 
 
 class HomeScreen extends React.Component {

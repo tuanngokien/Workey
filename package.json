@@ -9,7 +9,6 @@
   "dependencies": {
     "react": "16.6.3",
     "react-native": "0.58.6",
-    "react-native-big-slider": "^0.1.1",
     "react-native-circular-progress": "^1.1.0",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.1.0",

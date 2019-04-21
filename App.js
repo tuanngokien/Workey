@@ -8,8 +8,8 @@ import NotificationScreen from "./src/screens/Notification";
 import SearchScreen from "./src/screens/Search";
 import SettingsScreen from "./src/screens/Settings";
 import Icon from "react-native-vector-icons/Feather";
-import {TABS, TABBAR_ICONS} from "./src/constants";
-import {Badge} from 'react-native-elements'
+import EIcon from "react-native-vector-icons/Entypo";
+import {TABS, TABBAR_ICONS, MAIN_COLOR} from "./src/constants";
 import {YellowBox} from 'react-native';
 
 
@@ -24,14 +24,13 @@ const TabNavigator = createBottomTabNavigator({
                 <View>
                     <Icon
                         name={TABBAR_ICONS[TABS.Notification]}
-                        color={"#ffffff"}
-                        size={26}
+                        size={25}
                         color={tintColor}
                     />
-                    <Badge
-                        value="8"
-                        status="error"
-                        containerStyle={{position: 'absolute', top: -8.5, right: -12}}
+                    <EIcon
+                        name="dot-single"
+                        style={{color: "#00ADFF", fontSize: 30, position: 'absolute', top: -13, right: -13}}
+
                     />
                 </View>
             )
@@ -43,9 +42,9 @@ const TabNavigator = createBottomTabNavigator({
             tabBarIcon: ({tintColor}) => (
                 <Icon
                     name={TABBAR_ICONS[TABS.Search]}
-                    color={"#ffffff"}
-                    size={28}
-                    style={{padding: 12, backgroundColor: "#4F5BE3", borderRadius: 100}}
+                    color={tintColor}
+                    size={25}
+                    // style={{padding: 12, backgroundColor: MAIN_COLOR, borderRadius: 100}}
                 />
             )
         }),
@@ -64,18 +63,14 @@ const TabNavigator = createBottomTabNavigator({
     tabBarOptions: {
         tabBarPosition: 'bottom',
         style: {
-            height: 63,
+            height: 48,
             borderTopColor: "transparent",
-            shadowColor: "rgba(0, 0, 0, 1)",
-            shadowOffset: {
-                width: 0,
-                height: -10,
-            },
-            elevation: 4,
+
+
             backgroundColor: "#ffffff"
         },
         showLabel: false,
-        activeTintColor: "#4F5BE3"
+        activeTintColor: MAIN_COLOR
     }
 });
 
