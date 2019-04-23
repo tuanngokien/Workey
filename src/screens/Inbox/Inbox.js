@@ -5,13 +5,16 @@ import {
     TouchableOpacity,
     StyleSheet,
     Text,
-    FlatList
+    FlatList,
+    Alert
 } from 'react-native';
 import TopNavigator from "../../components/TopNavigator/TopNavigator"
 import { SearchBar } from "react-native-elements"
 import Conversations from "../Inbox/data"
 import { Avatar } from "react-native-elements"
 import BaseLandingContainer from "../../containers/Landing/Base"
+// import ChatConversations from "../../components/Chat/Chat"
+import InboxNavigator from "../Inbox/index"
 // import { FlatList } from "react-native-gesture-handler";
 
 let styles = StyleSheet.create({
@@ -71,9 +74,14 @@ class InboxScreen extends React.Component {
             )
         }
     }
+    op(){
+
+        // return this.props.navigation.navigate('Chat')
+    }
     renderUser = ({ item }) => {
+        
         return (
-            <TouchableOpacity style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
+            <TouchableOpacity onPress={this.op} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
                 <View style={{ flexDirection: "row", }}>
                     <View style={{ width: "15%" }}>
                         <Avatar
@@ -105,7 +113,7 @@ class InboxScreen extends React.Component {
     }
 
     render() {
-
+        
         return (
             <ScrollView style={styles.screen}>
             <BaseLandingContainer>
@@ -133,10 +141,12 @@ class InboxScreen extends React.Component {
                             data={this.state.conversations}
                             renderItem={this.renderUser}
                             keyExtractor={(item, index) => item.user.id.toString()}
+                            
                         />
 
 
                     </ScrollView>
+                    
                 </ScrollView>
             
         );
