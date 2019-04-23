@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet} from "react-native";
+import {View, StyleSheet, TouchableWithoutFeedback} from "react-native";
 import {Input} from 'react-native-elements';
 import Icon from "react-native-vector-icons/Feather";
 import LocationDropdown from "./LocationDropdown";
@@ -12,12 +12,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         paddingHorizontal: 0,
         borderRadius: 8,
-        shadowColor: "rgba(0, 0, 0, 1)",
-        shadowOffset: {
-            width: -3,
-            height: 5,
-        },
-        elevation: 2,
     },
     input: {
         fontFamily: "Nunito-Regular",
@@ -35,11 +29,13 @@ export default class SearchBar extends React.Component {
                         <LocationDropdown/>
                     }
                     leftIcon={
-                        <Icon
-                            name='search'
-                            size={24}
-                            color='#8e8e8e'
-                        />
+                        <TouchableWithoutFeedback onPress={this.props.onPress}>
+                            <Icon
+                                name='search'
+                                size={24}
+                                color='#8e8e8e'
+                            />
+                        </TouchableWithoutFeedback>
                     }
                     inputStyle={styles.input}
                     leftIconContainerStyle={{marginRight: 10}}

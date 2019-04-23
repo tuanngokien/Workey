@@ -22,7 +22,7 @@ let styles=StyleSheet.create({
         paddingVertical: "1%",
         paddingLeft:"2%",
         left:0
-        
+
     }
 })
 class NotificationScreen extends React.Component {
@@ -47,7 +47,7 @@ class NotificationScreen extends React.Component {
             <TouchableOpacity style={{backgroundColor:"white",marginVertical:10,heigh:80}}>
                 <View style={{flexDirection:"row"}}>
                     <View style={{width: "15%"}}>
-                        <Avatar 
+                        <Avatar
                             rounded
                             source={{
                                 uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'
@@ -60,35 +60,35 @@ class NotificationScreen extends React.Component {
                             }}
                         />
                     </View>
-                    <View style={{width: "60%"}}>
-                            <Text style={{fontSize: 14,color:"black"}}>
-                                <Text style={{fontWeight:"bold"}}>{item.user.name}</Text>
-                                {this.handleMessage(item.noti)}
-                            </Text>
+                    <View style={{width: "65%"}}>
+                        <Text style={{fontSize: 17,color:"black"}}>
+                            <Text style={{fontWeight:"bold"}}>{item.user.name}</Text>
+                            {this.handleMessage(item.noti)}
+                        </Text>
                     </View>
-                    <View style={{width: "25%",right:0,position:"absolute"}}>
-                            <Text>{item.user.time}</Text>
+                    <View style={{width: "20%",right:0,bottom:0,position:"absolute"}}>
+                        <Text>{item.user.time}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
         )
     }
-    
+
     render() {
         return (
             <ScrollView style={{backgroundColor:"transparent"}}>
                 <View >
-                <TopNavigator
-                    containerStyle={{
-                        //backgroundColor: "transparent",
-                        paddingTop: 20
-                    }}
-                    titleStyle={{
-                        fontSize: 15,
-                        fontFamily: ""
-                    }}/>
+                    <TopNavigator
+                        containerStyle={{
+                            //backgroundColor: "transparent",
+                            paddingTop: 20
+                        }}
+                        titleStyle={{
+                            fontSize: 15,
+                            fontFamily: ""
+                        }}/>
                 </View>
-                
+
                 <View>
                     <Text style={styles.titleContainer}>Notification</Text>
                 </View>
@@ -99,9 +99,9 @@ class NotificationScreen extends React.Component {
                         keyExtractor={(item,index)=>item.user.id.toString()}
                     />
                 </View>
-            
+
             </ScrollView>
-            
+
         );
     }
 }

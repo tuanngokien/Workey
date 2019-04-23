@@ -30,8 +30,8 @@ export default class NewsContainer extends React.Component {
                 <View style={styles.newsContainer}>
                     {Data.map((item, index) => (
                         <View key={index}>
-                            <NewsCard key={index} ordinalNumber={index + 1} {...item}/>
-                            <View key={index} style={(index != Data.length - 1) ? {
+                            <NewsCard ordinalNumber={index + 1} {...item}/>
+                            <View style={(index != Data.length - 1) ? {
                                 margin: "5%",
                                 borderWidth: 0.5,
                                 borderColor: "rgb(218, 220, 224)"

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
             height: 5,
         },
         shadowRadius: 18,
-        elevation: 2,
+        elevation: 1,
     },
     headerContainer: {
         flexDirection: "row",
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     subTitle: {
         fontFamily: "Nunito-SemiBold",
         fontSize: 13,
-        color: "#ababb5"
+        color: "#757575"
     },
     icon: {
         paddingVertical: 10,

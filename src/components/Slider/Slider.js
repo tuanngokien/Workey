@@ -1,6 +1,6 @@
 import React from "react";
 import {StyleSheet, View, Text} from "react-native";
-import BigSlider from "react-native-big-slider";
+import BigSlider from "./BigSlider";
 
 const styles = StyleSheet.create({
     container: {
@@ -15,8 +15,7 @@ const styles = StyleSheet.create({
     backgroundText: {
         position: "absolute",
         width: 200,
-        top: "30%",
-        left: "-113%",
+        top: "35%",
         transform: [{rotate: '-90deg'}],
         fontSize: 15,
     },
@@ -58,6 +57,7 @@ export default class Slider extends React.Component {
         value: 50,
         showValue: true,
         maxValue: 100,
+        textBackgroundLeftPosition: 0
     };
 
     componentWillMount() {
@@ -82,16 +82,21 @@ export default class Slider extends React.Component {
             this.setState({value: Math.round(nextValue)});
             this.setState({value: Math.round(nextValue)});
         }
-    }
+    };
+
+    onLayout = (event) => {
+        let {x, y, width, height} = event.nativeEvent.layout;
+        this.setState({textBackgroundLeftPosition: -width + 4.23});
+    };
 
     render() {
         const {slideColor, backgroundTextColor, chartTitle} = this.props;
         const {label, labelContainer, value, showValue, maxValue} = this.state;
         return (
             <View style={styles.container}>
-                <View style={[styles.sliderContainer, styles.shadow]}>
+                <View style={[styles.sliderContainer, styles.shadow]} onLayout={this.onLayout}>
                     <Text
-                        style={[styles.backgroundText, styles.defaultFont, {color: backgroundTextColor}]}>{chartTitle}</Text>
+                        style={[styles.backgroundText, styles.defaultFont, {color: backgroundTextColor, left: this.state.textBackgroundLeftPosition}]}>{chartTitle}</Text>
                     <BigSlider
                         style={styles.slider}
                         trackStyle={{backgroundColor: slideColor}}
