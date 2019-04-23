@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet, Image, Text} from "react-native";
+import {View, StyleSheet, Image, Text, TouchableWithoutFeedback} from "react-native";
 
 let styles = StyleSheet.create({
     card: {
@@ -31,18 +31,23 @@ let styles = StyleSheet.create({
 
 class TinyCategoryCard extends React.Component {
     render() {
-        let {src, shadeColor, title, subTitle} = this.props;
-        const shadeStyle = StyleSheet.flatten([styles.shade, {backgroundColor: shadeColor}]);
+        let {src, shadeColor, title, activeColor, active, index, onPress} = this.props;
+        const containerStyle = StyleSheet.flatten([
+            styles.imageContainer,
+            {backgroundColor: shadeColor},
+            active ? {borderColor: activeColor, borderWidth: 2} : null]);
         return (
-            <View style={styles.card}>
-                <View style={[styles.imageContainer, {backgroundColor: shadeColor}]}>
-                    <Image
-                        source={src}
-                        style={[styles.image]}
-                    />
+            <TouchableWithoutFeedback onPress={onPress}>
+                <View style={styles.card}>
+                    <View style={containerStyle}>
+                        <Image
+                            source={src}
+                            style={[styles.image]}
+                        />
+                    </View>
+                    <Text style={styles.titleContainer}>{title}</Text>
                 </View>
-                <Text style={styles.titleContainer}>{title}</Text>
-            </View>
+            </TouchableWithoutFeedback>
         )
     }
 }

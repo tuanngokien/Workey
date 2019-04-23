@@ -17,7 +17,7 @@ import {
 import { db } from "../../../App"
 import { RkSwitch } from '../../../node_modules/react-native-ui-kitten/src/components/switch/rkSwitch.android';
 import AvatarUser from "../../components/AvatarUser/AvatarUser"
-import BaseLandingContainer from "../../containers/Landing/Base"
+import BaseLandingContainer from "../../containers/BaseLanding"
 import HomeBackground from "../../assets/images/background/sky.png";
 
 let styles = StyleSheet.create({

@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
 import {DEVICE_WIDTH} from "../../constants";
-import JobCard from "../../components/JobCard";
+import EmployerCard from "../../components/EmployerCard";
 import Carousel from 'react-native-snap-carousel';
 import {Data} from "./data";
 
@@ -10,6 +10,13 @@ export const styles = StyleSheet.create({
         fontFamily: "Nunito-Bold",
         fontSize: 16,
         color: "#000000",
+        paddingHorizontal: "5%",
+        paddingTop: "3%",
+        paddingBottom: "2%"
+    },
+    subtitleContainer: {
+        fontFamily: "Nunito-SemiBold",
+        fontSize: 14,
         paddingHorizontal: "5%",
         paddingTop: "3%",
         paddingBottom: "2%"
@@ -23,7 +30,7 @@ export const styles = StyleSheet.create({
 export default class TopEmployersContainer extends React.Component {
     _renderItem({item, index}) {
         return (
-            <JobCard key={index} {...item}/>
+            <EmployerCard key={index} {...item}/>
         );
     }
 

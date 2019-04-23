@@ -13,7 +13,7 @@ import { SearchBar } from "react-native-elements"
 import Conversations from "../Inbox/data"
 import { Avatar } from "react-native-elements"
 import BaseLandingContainer from "../../containers/Landing/Base"
-// import ChatConversations from "../../components/Chat/Chat"
+import ChatConversations from "../../components/Chat/Chat"
 import InboxNavigator from "../Inbox/index"
 // import { FlatList } from "react-native-gesture-handler";
 
