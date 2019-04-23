@@ -60,13 +60,13 @@ class NotificationScreen extends React.Component {
                             }}
                         />
                     </View>
-                    <View style={{width: "65%"}}>
-                            <Text style={{fontSize: 17,color:"black"}}>
+                    <View style={{width: "60%"}}>
+                            <Text style={{fontSize: 14,color:"black"}}>
                                 <Text style={{fontWeight:"bold"}}>{item.user.name}</Text>
                                 {this.handleMessage(item.noti)}
                             </Text>
                     </View>
-                    <View style={{width: "20%",right:0,bottom:0,position:"absolute"}}>
+                    <View style={{width: "25%",right:0,position:"absolute"}}>
                             <Text>{item.user.time}</Text>
                     </View>
                 </View>
@@ -96,7 +96,7 @@ class NotificationScreen extends React.Component {
                     <FlatList
                         data={this.state.notification}
                         renderItem={this.renderNoti}
-                        //keyExtractor={(item,index)=>item.user.id.toString()}
+                        keyExtractor={(item,index)=>item.user.id.toString()}
                     />
                 </View>
             

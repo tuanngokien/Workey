@@ -1,16 +1,16 @@
 import React from 'react';
 
-import {View, Text, StatusBar} from 'react-native';
-import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
+import { View, Text, StatusBar } from 'react-native';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from "./src/screens/Home";
-import InboxScreen from "./src/screens/Inbox";
+import InboxScreen from "./src/screens/Inbox/Inbox";
 import NotificationScreen from "./src/screens/Notification";
 import SearchScreen from "./src/screens/Search";
 import SettingsScreen from "./src/screens/Settings";
 import Icon from "react-native-vector-icons/Feather";
-import {TABS, TABBAR_ICONS} from "./src/constants";
-import {Badge} from 'react-native-elements'
-import {YellowBox} from 'react-native';
+import { TABS, TABBAR_ICONS } from "./src/constants";
+import { Badge } from 'react-native-elements'
+import { YellowBox } from 'react-native';
 
 
 YellowBox.ignoreWarnings(['Remote debugger']);
@@ -20,7 +20,7 @@ const TabNavigator = createBottomTabNavigator({
     [TABS.Notification]: {
         screen: NotificationScreen,
         navigationOptions: () => ({
-            tabBarIcon: ({tintColor}) => (
+            tabBarIcon: ({ tintColor }) => (
                 <View>
                     <Icon
                         name={TABBAR_ICONS[TABS.Notification]}
@@ -31,7 +31,7 @@ const TabNavigator = createBottomTabNavigator({
                     <Badge
                         value="8"
                         status="error"
-                        containerStyle={{position: 'absolute', top: -8.5, right: -12}}
+                        containerStyle={{ position: 'absolute', top: -8.5, right: -12 }}
                     />
                 </View>
             )
@@ -40,12 +40,12 @@ const TabNavigator = createBottomTabNavigator({
     [TABS.Search]: {
         screen: SearchScreen,
         navigationOptions: () => ({
-            tabBarIcon: ({tintColor}) => (
+            tabBarIcon: ({ tintColor }) => (
                 <Icon
                     name={TABBAR_ICONS[TABS.Search]}
                     color={"#ffffff"}
                     size={28}
-                    style={{padding: 12, backgroundColor: "#4F5BE3", borderRadius: 100}}
+                    style={{ padding: 12, backgroundColor: "#4F5BE3", borderRadius: 100 }}
                 />
             )
         }),
@@ -53,37 +53,37 @@ const TabNavigator = createBottomTabNavigator({
     [TABS.Inbox]: InboxScreen,
     [TABS.Settings]: SettingsScreen,
 }, {
-    initialRouteName: TABS.Search,
-    defaultNavigationOptions: ({navigation}) => ({
-        tabBarIcon: ({focused, tintColor}) => {
-            const {routeName} = navigation.state;
-            const iconName = TABBAR_ICONS[routeName];
-            return <Icon name={iconName} size={25} color={tintColor}/>;
-        }
-    }),
-    tabBarOptions: {
-        tabBarPosition: 'bottom',
-        style: {
-            height: 63,
-            borderTopColor: "transparent",
-            shadowColor: "rgba(0, 0, 0, 1)",
-            shadowOffset: {
-                width: 0,
-                height: -10,
+        initialRouteName: TABS.Search,
+        defaultNavigationOptions: ({ navigation }) => ({
+            tabBarIcon: ({ focused, tintColor }) => {
+                const { routeName } = navigation.state;
+                const iconName = TABBAR_ICONS[routeName];
+                return <Icon name={iconName} size={25} color={tintColor} />;
+            }
+        }),
+        tabBarOptions: {
+            tabBarPosition: 'bottom',
+            style: {
+                height: 63,
+                borderTopColor: "transparent",
+                shadowColor: "rgba(0, 0, 0, 1)",
+                shadowOffset: {
+                    width: 0,
+                    height: -10,
+                },
+                elevation: 4,
+                backgroundColor: "#ffffff"
             },
-            elevation: 4,
-            backgroundColor: "#ffffff"
-        },
-        showLabel: false,
-        activeTintColor: "#4F5BE3"
-    }
-});
+            showLabel: false,
+            activeTintColor: "#4F5BE3"
+        }
+    });
 
 const AppContainer = createAppContainer(TabNavigator);
 var SQLite = require('react-native-sqlite-storage');
-export const db = SQLite.openDatabase({name:"user",createFromLocation:"~workey.db"})
+export const db = SQLite.openDatabase({ name: "user", createFromLocation: "~workey.db" })
 export default class App extends React.Component {
     render() {
-        return <AppContainer/>;
+        return <AppContainer />;
     }
 }
