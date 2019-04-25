@@ -12,10 +12,9 @@ import TopNavigator from "../../components/TopNavigator/TopNavigator"
 import { SearchBar } from "react-native-elements"
 import Conversations from "../Inbox/data"
 import { Avatar } from "react-native-elements"
-import BaseLandingContainer from "../../containers/Landing/Base"
+import BaseLandingContainer from "../../containers/BaseLanding/index"
 import ChatConversations from "../../components/Chat/Chat"
-import InboxNavigator from "../Inbox/index"
-// import { FlatList } from "react-native-gesture-handler";
+
 
 let styles = StyleSheet.create({
     containerSearchBar: {
@@ -47,16 +46,27 @@ let styles = StyleSheet.create({
     },
     flexRow: {
         flexDirection: "row",
+    },
+    header:{
+        marginBottom: 10
     }
 
 
 
 })
 class InboxScreen extends React.Component {
-    state = {
-        search: "",
-        conversations: Conversations,
+    constructor(props){
+        super(props);
+        this.state = {
+            search: "",
+            conversations: Conversations,
+        };
     }
+    // state={
+    //     search: "",
+    //     conversations: Conversations,
+    // }
+    
 
     updateSearch = search => {
         this.setState({ search });
@@ -74,23 +84,27 @@ class InboxScreen extends React.Component {
             )
         }
     }
-    op(){
+    tranferChat=(item)=>()=>{
+        this.props.navigation.navigate('Chat',{item});
+        // Alert.alert("a");
 
-        // return this.props.navigation.navigate('Chat')
     }
     renderUser = ({ item }) => {
-        
         return (
-            <TouchableOpacity onPress={this.op} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
+
+            <TouchableOpacity onPress={this.tranferChat(item.user)} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
                 <View style={{ flexDirection: "row", }}>
                     <View style={{ width: "15%" }}>
                         <Avatar
                             rounded
 
-                            source={{
-                                uri:
-                                    'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'
-                            }}
+                            // source={{
+                            //     uri: item.user.avatar
+                            // }}
+                            source={
+                            item.user.avatar
+                            }
+                            // source= "../../assets/images/avatar/avatar2.jpeg"
                             size={50}
                             containerStyle={{
                                 borderRadius: 100,
@@ -116,7 +130,7 @@ class InboxScreen extends React.Component {
         
         return (
             <ScrollView style={styles.screen}>
-            <BaseLandingContainer>
+            <BaseLandingContainer style={styles.header}>
                 
                   
                     <View>
