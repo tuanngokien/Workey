@@ -4,6 +4,7 @@ import { View, Text, StatusBar } from 'react-native';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from "./src/screens/Home";
 import InboxScreen from "./src/screens/Inbox/Inbox";
+import InboxNavigator from "./src/screens/Inbox/index"
 import NotificationScreen from "./src/screens/Notification";
 import SearchScreen from "./src/screens/Search";
 import SettingsScreen from "./src/screens/Settings";
@@ -50,7 +51,8 @@ const TabNavigator = createBottomTabNavigator({
             )
         }),
     },
-    [TABS.Inbox]: InboxScreen,
+    // [TABS.Inbox]: InboxScreen,
+    [TABS.Inbox]: InboxNavigator,
     [TABS.Settings]: SettingsScreen,
 }, {
     initialRouteName: TABS.Search,
@@ -76,8 +78,6 @@ const TabNavigator = createBottomTabNavigator({
 });
 
 const AppContainer = createAppContainer(TabNavigator);
-var SQLite = require('react-native-sqlite-storage');
-export const db = SQLite.openDatabase({ name: "user", createFromLocation: "~workey.db" })
 export default class App extends React.Component {
     render() {
         return <AppContainer />;
