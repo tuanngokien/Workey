@@ -27,7 +27,7 @@ let styles = StyleSheet.create({
         // borderBottomWidth: 1,
         // borderColor: theme.colors.border.base,
         zIndex:2,
-        marginTop:75,
+        marginTop:85,
     },
     email :{
         fontSize :10,
@@ -49,10 +49,11 @@ class AvatarUser extends React.Component{
             <View>
             <Avatar
                         rounded
-                        source={{
-                            uri:
-                                'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                        }}
+                        // source={{
+                        //     uri:
+                        //         'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                        // }}
+                        source={require('../../assets/images/avatar/avatar5.jpeg')}
                         size={160}
                         containerStyle={{
                             borderRadius: 100,

@@ -42,14 +42,14 @@ let styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 17.5,
+        paddingHorizontal: 12.5,
         // borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: "white",
         alignItems: 'center',
     },
     rowButton: {
         flex: 1,
-        paddingVertical: 24,
+        paddingVertical: 18,
     },
     switch: {
         marginVertical: 14,
@@ -86,7 +86,7 @@ class SettingsScreen extends React.Component {
                 {/* <BaseLandingContainer>
                 <AvatarUser></AvatarUser>
             </BaseLandingContainer> */}
-                <View style={{marginBottom:125}}>
+                <View style={{marginBottom:122}}>
                 <ImageBackground source={HomeBackground} style={styles.imageBackground}
                     imageStyle={{ borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}>
 
