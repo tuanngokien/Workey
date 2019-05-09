@@ -1,11 +1,10 @@
-let avatar4 = require("../../assets/images/avatar/avatar4.jpg");
 var Conversations = [
     {
       user:{
           id : 2,
           name : "Tobiichi Origami",
-          avatar : "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
-          time : "5:55 PM"
+          avatar : require("../../assets/images/avatar/avatar2.jpeg"),
+          time : "5:57 PM"
       },
       messages: [
         {
@@ -48,9 +47,9 @@ var Conversations = [
     },
     {
         user :{
-            id : 1,
-            name : "PT TA",
-            avatar :"../../assets/images/avatar/avatar4.jpg",
+            id : 3,
+            name : "Zeros",
+            avatar :require("../../assets/images/avatar/avatar3.jpeg"),
             time : "5:55 PM"
         },
       messages: [
@@ -93,9 +92,9 @@ var Conversations = [
     },
     {
       user :{
-          id : 1,
-          name : "PT TA",
-          avatar :"../../assets/images/avatar/avatar4.jpg",
+          id : 4,
+          name : "AN Lu",
+          avatar :require("../../assets/images/avatar/avatar.jpg"),
           time : "5:55 PM"
       },
     messages: [
@@ -138,9 +137,9 @@ var Conversations = [
   },
   {
     user :{
-        id : 1,
-        name : "PT TA",
-        avatar :"../../assets/images/avatar/avatar4.jpg",
+        id : 5,
+        name : "Nguyen Duc Thien",
+        avatar :require("../../assets/images/avatar/avatar5.jpeg"),
         time : "5:55 PM"
     },
   messages: [
@@ -183,9 +182,9 @@ var Conversations = [
 },
 {
   user :{
-      id : 1,
-      name : "PT TA",
-      avatar :"../../assets/images/avatar/avatar4.jpg",
+      id : 8,
+      name : "Ngo Kien Tuan",
+      avatar :require("../../assets/images/avatar/avatar2.jpeg"),
       time : "5:55 PM"
   },
 messages: [
@@ -228,9 +227,9 @@ messages: [
 },
 {
   user :{
-      id : 1,
-      name : "PT TA",
-      avatar :"../../assets/images/avatar/avatar4.jpg",
+      id : 6,
+      name : "Hoang Anh Tuan",
+      avatar :require("../../assets/images/avatar/avatar4.jpg"),
       time : "5:55 PM"
   },
 messages: [
@@ -273,9 +272,9 @@ messages: [
 },
 {
   user :{
-      id : 1,
-      name : "PT TA",
-      avatar :"../../assets/images/avatar/avatar4.jpg",
+      id : 7,
+      name : "Bigkoro",
+      avatar :require("../../assets/images/avatar/avatar2.jpeg"),
       time : "5:55 PM"
   },
 messages: [
@@ -318,9 +317,9 @@ messages: [
 },
 {
   user :{
-      id : 1,
-      name : "PT TA",
-      avatar :"../../assets/images/avatar/avatar4.jpg",
+      id : 18,
+      name : "Meliodas",
+      avatar :require("../../assets/images/avatar/avatar2.jpeg"),
       time : "5:55 PM"
   },
 messages: [
