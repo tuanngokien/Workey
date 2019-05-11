@@ -51,7 +51,7 @@ class TopNavigator extends React.Component {
                 <View style={{flexDirection: "row"}}>
                     <Avatar
                         rounded
-                        source={require("../../assets/images/avatar/avatar5.jpeg")}
+                        source={require("../../assets/images/avatar/avatar6_sm.jpg")}
                         size={47}
                         containerStyle={styles.avatarContainer}
                         overlayContainerStyle={styles.overlayAvatarContainer}

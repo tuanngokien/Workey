@@ -9,6 +9,7 @@ export default Data = {
     createdAt: "April 15, 2019",
     viewCount: "2,940",
     rating: "4.6",
+    address: "3th floor, 292 Tay Son, Hanoi",
     description: "This is an excellent opportunity for you to be a key member in helping the organisation to achieve its vision and be responsible for user experience/user interaction design of their product.",
     responsibilities: [
         "Minimum 2 years experience in UX Design",

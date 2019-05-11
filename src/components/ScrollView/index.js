@@ -15,8 +15,9 @@ const styles = StyleSheet.create({
 export default class extends React.Component {
     render() {
         const style = StyleSheet.flatten([styles.container, this.props.style]);
+        const scrollViewStyle = StyleSheet.flatten([styles.scrollView, this.props.scrollViewStyle])
         return (
-            <ScrollView style={styles.scrollView} onScroll={this.props.onScroll}>
+            <ScrollView style={scrollViewStyle} onScroll={this.props.onScroll}>
                 <View style={style}>
                     {this.props.children}
                 </View>
