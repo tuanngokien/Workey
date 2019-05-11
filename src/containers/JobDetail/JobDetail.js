@@ -6,6 +6,7 @@ import Icon from "react-native-vector-icons/AntDesign";
 import {ColoredDivider} from "../../components/Divider";
 import CriterionList from "../../components/CriterionList";
 import ScrollView from "../../components/ScrollView";
+import MapView from "../../components/MapView";
 import Data from "./data";
 import {DEVICE_HEIGHT} from "../../constants";
 
@@ -21,9 +22,6 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         top: CONTENT_OVERLAP_TOP,
         marginBottom: DEVICE_HEIGHT* 0.07 + CONTENT_OVERLAP_TOP + 3,
-        // marginHorizontal: "3%",
-        // paddingBottom: "2%",
-        // elevation: 4,
     },
     avatarContainer: {
         backgroundColor: "#ffffff",
@@ -86,7 +84,7 @@ const TinyCard = ({iconName, number, title, style}) => {
 
 export default class JobDetailContainer extends React.Component {
     render() {
-        const {cover, logo, title, employer, createdAt, viewCount, rating, description, responsibilities, qualifications} = Data;
+        const {cover, logo, title, employer, createdAt, viewCount, rating, description, responsibilities, qualifications, address} = Data;
         return (
             <ScrollView style={{backgroundColor: "#ffffff"}}>
                 <SimpleTopNavigator title={""} coverSource={cover} rightIconName={"md-share"}
@@ -118,6 +116,10 @@ export default class JobDetailContainer extends React.Component {
                     <View>
                         <Text style={[styles.title, {fontSize: 18}]}>Qualifications</Text>
                         <CriterionList data={qualifications}/>
+                    </View>
+                    <View>
+                        <Text style={[styles.title, {fontSize: 18, paddingBottom: "0.08%"}]}>Location</Text>
+                        <MapView address={address}/>
                     </View>
                 </View>
             </ScrollView>

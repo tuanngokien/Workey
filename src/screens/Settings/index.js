@@ -1,3 +1,21 @@
 import SettingsScreen from "./Settings";
+import ProfileScreen from "../Profile";
+import {createAppContainer, createStackNavigator} from "react-navigation";
+import {SETTING_SCREEN, PROFILE_SCREEN} from "./Tabs";
 
-export default SettingsScreen;
+
+
+const RootStack = createStackNavigator(
+    {
+        [SETTING_SCREEN]: SettingsScreen,
+        [PROFILE_SCREEN]: ProfileScreen,
+    },
+    {
+        initialRouteName: PROFILE_SCREEN,
+        defaultNavigationOptions: {
+            header: null
+        }
+    },
+);
+
+export default createAppContainer(RootStack);

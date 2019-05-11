@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/runtime": "^7.4.4",
     "react": "16.6.3",
     "react-native": "0.58.6",
     "react-native-circular-progress": "^1.1.0",
@@ -14,8 +15,10 @@
     "react-native-gesture-handler": "^1.1.0",
     "react-native-linear-gradient": "^2.5.3",
     "react-native-maps": "^0.23.0",
+    "react-native-maps-directions": "^1.6.0",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-paper": "^2.13.0",
+    "react-native-progress": "^3.6.0",
     "react-native-remote-svg": "^1.4.2",
     "react-native-snap-carousel": "^3.7.5",
     "react-native-sqlite-storage": "^3.3.10",
