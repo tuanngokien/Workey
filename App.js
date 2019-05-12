@@ -13,6 +13,7 @@ import { Badge } from 'react-native-elements'
 import EIcon from "react-native-vector-icons/Entypo";
 import {TABS, TABBAR_ICONS, MAIN_COLOR} from "./src/constants";
 import {YellowBox} from 'react-native';
+import NumberNotification from "./src/components/NumberNotification/NumberNotification"
 
 
 YellowBox.ignoreWarnings(['Remote debugger']);
@@ -29,11 +30,7 @@ const TabNavigator = createBottomTabNavigator({
                         size={25}
                         color={tintColor}
                     />
-                    <EIcon
-                        name="dot-single"
-                        style={{color: "#00ADFF", fontSize: 30, position: 'absolute', top: -13, right: -13}}
-
-                    />
+                    <NumberNotification number="1" /> 
                 </View>
             )
         }),
