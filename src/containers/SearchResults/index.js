@@ -37,7 +37,7 @@ class SearchResultsContainer extends React.Component {
                             name={"map-pin"} size={14}/> Hanoi</Text>
                     </View>
                     <View style={styles.resultTitleContainer}>
-                        <Text style={[titleStyles.titleContainer, {color: "#757575", fontSize: 12, paddingTop: 0}]}>All IT Developer jobs</Text>
+                        <Text style={[titleStyles.subtitleContainer, {color: "#757575", fontSize: 12, paddingTop: 0}]}>All IT Developer jobs</Text>
                     </View>
                     <JobResultList onItemPress={this.props.onItemPress} data={Data.results}/>
                 </View>

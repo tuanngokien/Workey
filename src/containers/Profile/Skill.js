@@ -5,7 +5,7 @@ import {StyleSheet, View, Image, Text} from "react-native";
 const styles = StyleSheet.create({
     container: {
         marginTop: 5,
-        flexDirection: "row"
+        flexDirection: "row",
     },
     image: {
         width: 45,
