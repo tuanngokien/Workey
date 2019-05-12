@@ -8,30 +8,44 @@ import {
     FlatList
 } from 'react-native';
 import TopNavigator from "../../components/TopNavigator/TopNavigator"
+import {SimpleTopNavigator} from "../../components/TopNavigator";
+import {TopNoti} from "../../components/TopNavigator"
 import Notification from "../Notification/data"
-import { Avatar } from "react-native-elements"
+import {ColoredDivider, Divider,NotiDivider} from "../../components/Divider";
+import { Avatar } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
 let styles=StyleSheet.create({
-    containerList:{
-        backgroundColor: "white",
-        paddingTop: 5,
+    
+    notiReaded:{
+        backgroundColor:"#FFFFFF",
+        paddingTop:10,
+        //color:"#CFCFCF",
+        color:"red",
+        height:90
     },
-    titleContainer: {
-        fontFamily: "Nunito-Bold",
-        fontSize: 20,
-        color: "#000000",
-        paddingVertical: "1%",
-        paddingLeft:"2%",
-        left:0
+    notiNotReaded:{
+        backgroundColor:"#ECF3FF",
+        paddingVertical:10,
+        //color:"#1C1C1C",
+        color:"blue",
+        height:90
+    },
+    icon:{
+        fontSize:25,
+        marginLeft:42,
+        marginTop:-17
+    },
+    
 
-    }
+    
 })
 class NotificationScreen extends React.Component {
     state={
-        notification: Notification
+        notification: Notification,
     }
     handleMessage(message) {
-        if (message.length > 30) {
-            let tmp = message.slice(0, 30) + "...";
+        if (message.length > 40) {
+            let tmp = message.slice(0, 40) + "...";
             return (
                 <Text>{tmp}</Text>
             )
@@ -44,32 +58,43 @@ class NotificationScreen extends React.Component {
     }
     renderNoti = ({ item }) => {
         return(
-            <TouchableOpacity style={{backgroundColor:"white",marginVertical:10,heigh:80}}>
-                <View style={{flexDirection:"row"}}>
-                    <View style={{width: "15%"}}>
+             // <TouchableOpacity style={{ backgroundColor:"white",marginVertical:5,heigh:80}}>
+             <TouchableOpacity style={[item.user.readed? styles.notiReaded :styles.notiNotReaded]}> 
+                <NotiDivider/>
+                <TouchableOpacity>                
+                <View style={{flexDirection:"row", paddingTop:15}}>
+
+                    <View style={{width: "20%"}}>
                         <Avatar
                             rounded
                             source={{
-                                uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'
+                                uri:"https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg"
                             }}
-                            size={50}
+                            size={55}
                             containerStyle={{
                                 borderRadius:100,
                                 borderWidth: 1.5,
-                                borderColor: "white"
+                                borderColor: "white",
+                                marginLeft: 15
                             }}
                         />
+                        <Icon name={item.icon} type="Feather" color={item.color} style={styles.icon} />
                     </View>
-                    <View style={{width: "65%"}}>
-                        <Text style={{fontSize: 17,color:"black"}}>
-                            <Text style={{fontWeight:"bold"}}>{item.user.name}</Text>
-                            {this.handleMessage(item.noti)}
+                    <View style={{width: "65%",marginLeft:15}}>
+                        <Text style={{fontSize: 17,marginTop:4,color:"black"}}>
+                            <Text style={{fontWeight:"bold",color:"#363636"}}>{item.user.name}</Text> 
+                            {this.handleMessage(item.noti)}                                                                                    
                         </Text>
                     </View>
-                    <View style={{width: "20%",right:0,bottom:0,position:"absolute"}}>
-                        <Text>{item.user.time}</Text>
-                    </View>
+                    
                 </View>
+                <View style={{width: "20%",left:85,bottom:0,top:63,position:"absolute",flexDirection:"row",height:19}}>
+                        <Icon name="clock-o" color={"blue"} style={{fontSize:15,marginTop:2,marginRight:3}}/>
+                         <Text style={{color:"blue"}}>{item.user.time}</Text>
+                </View>
+                </TouchableOpacity>
+                
+                
             </TouchableOpacity>
         )
     }
@@ -78,21 +103,10 @@ class NotificationScreen extends React.Component {
         return (
             <ScrollView style={{backgroundColor:"transparent"}}>
                 <View >
-                    <TopNavigator
-                        containerStyle={{
-                            //backgroundColor: "transparent",
-                            paddingTop: 20
-                        }}
-                        titleStyle={{
-                            fontSize: 15,
-                            fontFamily: ""
-                        }}/>
+                <TopNoti title={"Notification"} />
+                {/* <SimpleTopNavigator title={"Notification1"} /> */}
                 </View>
-
                 <View>
-                    <Text style={styles.titleContainer}>Notification</Text>
-                </View>
-                <View style={styles.containerList}>
                     <FlatList
                         data={this.state.notification}
                         renderItem={this.renderNoti}
