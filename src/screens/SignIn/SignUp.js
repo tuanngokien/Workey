@@ -1,21 +1,11 @@
 import React from "react";
-import {View, StyleSheet, Text, ImageBackground, TouchableWithoutFeedback, StatusBar} from "react-native";
+import {View, Text, TouchableWithoutFeedback, StatusBar, Image} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from "react-native-vector-icons/FontAwesome";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import Input from "../../components/Input";
-import {styles as signInStyles} from "./SignIn";
-
-export const styles = StyleSheet.create({
-    ...signInStyles,
-    divider: {
-        width: "25%",
-        height: 5,
-        backgroundColor: "#fff",
-        borderRadius: 10,
-        marginVertical: 10,
-    },
-});
+import {styles} from "./SignIn";
+import WorkeyLogo from "../../assets/images/icons/w.png";
 
 export default class IntroScreen extends React.Component {
     onBack = () => {
@@ -31,8 +21,13 @@ export default class IntroScreen extends React.Component {
                         <IonIcon name={"md-arrow-round-back"} color={"#fff"} size={30}/>
                     </TouchableWithoutFeedback>
                     <View style={{height: "90%"}}>
-                        <Text style={[styles.title]}>Sign Up</Text>
-                        <View style={styles.divider}/>
+                        <View style={[styles.rowContainer, {justifyContent: "space-between"}]}>
+                            <View>
+                                <Text style={[styles.title]}>Sign Up</Text>
+                                <View style={styles.divider}/>
+                            </View>
+                            <Image source={WorkeyLogo} style={styles.logo}/>
+                        </View>
                         <View>
                             <Input label="First Name" labelStyle={styles.label} inputStyle={styles.input} inputContainerStyle={styles.inputContainer}/>
                             <Input label="Last Name" labelStyle={styles.label} inputStyle={styles.input} inputContainerStyle={styles.inputContainer}/>
