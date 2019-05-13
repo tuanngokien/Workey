@@ -12,6 +12,7 @@ import Icon from "react-native-vector-icons/Feather";
 import { Badge } from 'react-native-elements'
 import EIcon from "react-native-vector-icons/Entypo";
 import {TABS, TABBAR_ICONS, MAIN_COLOR} from "./src/constants";
+import OneSignal from 'react-native-onesignal'; 
 import {YellowBox} from 'react-native';
 
 
@@ -79,6 +80,14 @@ const TabNavigator = createBottomTabNavigator({
 
 const AppContainer = createAppContainer(TabNavigator);
 export default class App extends React.Component {
+    constructor(properties) {
+        super(properties);
+        OneSignal.init("3605c104-24a6-4fe5-ab81-a1ec69e66775");
+    
+        // OneSignal.addEventListener('received', this.onReceived);
+        // OneSignal.addEventListener('opened', this.onOpened);
+        // OneSignal.addEventListener('ids', this.onIds);
+      }
     render() {
         return <AppContainer />;
     }
