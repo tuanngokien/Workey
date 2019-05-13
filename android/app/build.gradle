@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+    }
+}
+
+apply plugin: "com.onesignal.androidsdk.onesignal-gradle-plugin"
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -103,6 +113,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        manifestPlaceholders = [onesignal_app_id: "05c104-24a6-4fe5-ab81-a1ec69e66775",
+                                onesignal_google_project_number: "REMOTE"]
     }
     splits {
         abi {
@@ -134,6 +146,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-onesignal')
     implementation project(':react-native-maps')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-svg')
