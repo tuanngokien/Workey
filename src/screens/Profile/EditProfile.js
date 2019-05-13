@@ -7,11 +7,7 @@ import EditProfileContainer from "../../containers/EditProfile";
 
 class EditProfileScreen extends React.Component {
     onBack = () => {
-        // this.props.navigation.goBack()
-    };
-
-    onItemPress = () => {
-        // this.props.navigation.navigate(JOB_DETAIL_SCREEN)
+        this.props.navigation.goBack()
     };
 
     render() {
