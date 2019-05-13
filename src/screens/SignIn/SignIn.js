@@ -5,7 +5,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import Input from "../../components/Input";
 import WorkeyLogo from "../../assets/images/icons/w.png";
-// import {facebookLogin} from "../../actions/facebook";
+import {facebookLogin, googleLogin, emailLogin, isAuthenticated} from "../../actions/auth";
+
 export const styles = StyleSheet.create({
     imageBackground: {
         // width: '100%',
@@ -95,12 +96,25 @@ export default class IntroScreen extends React.Component {
     };
 
     onFBLogin = () => {
-        // facebookLogin()
+        facebookLogin()
     };
+
+    onGoogleLogin = () => {
+        googleLogin()
+    };
+
+    onEmailLogin = () => {
+        emailLogin()
+    };
+
+    componentDidMount() {
+        isAuthenticated()
+    }
 
     render() {
         return (
-            <LinearGradient start={{x: 0, y: 1}} end={{x: 1, y: 0}} colors={["#00A0C3", "#2580B3", "#00A0C3", "#2580B3"]} style={{flex: 1}}>
+            <LinearGradient start={{x: 0, y: 1}} end={{x: 1, y: 0}}
+                            colors={["#00A0C3", "#2580B3", "#00A0C3", "#2580B3"]} style={{flex: 1}}>
                 <StatusBar translucent backgroundColor={"transparent"}/>
                 <View style={styles.container}>
                     <TouchableWithoutFeedback onPress={this.onBack}>
@@ -115,12 +129,14 @@ export default class IntroScreen extends React.Component {
                             <Image source={WorkeyLogo} style={styles.logo}/>
                         </View>
                         <View>
-                            <Input label="Email address" labelStyle={styles.label} inputStyle={styles.input} inputContainerStyle={styles.inputContainer}/>
-                            <Input label="Password" labelStyle={styles.label} inputStyle={styles.input} secureTextEntry={true} inputContainerStyle={styles.inputContainer}/>
+                            <Input label="Email address" labelStyle={styles.label} inputStyle={styles.input}
+                                   inputContainerStyle={styles.inputContainer}/>
+                            <Input label="Password" labelStyle={styles.label} inputStyle={styles.input}
+                                   secureTextEntry={true} inputContainerStyle={styles.inputContainer}/>
                             <View style={[styles.rowContainer, {justifyContent: "space-between"}]}>
-                                <TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback onPress={this.onEmailLogin}>
                                     <View style={[styles.customSignInButton]}>
-                                        <Text style={[styles.title, {color: "#514A9D",fontSize: 16}]}>Sign In</Text>
+                                        <Text style={[styles.title, {color: "#514A9D", fontSize: 16}]}>Sign In</Text>
                                     </View>
                                 </TouchableWithoutFeedback>
                             </View>
@@ -135,7 +151,7 @@ export default class IntroScreen extends React.Component {
                             </TouchableWithoutFeedback>
                         </View>
                         <View style={styles.buttonContainer}>
-                            <TouchableWithoutFeedback>
+                            <TouchableWithoutFeedback onPress={this.onGoogleLogin}>
                                 <View style={[styles.signInButton, {backgroundColor: "#DD4B39"}]}>
                                     <Icon name={"google"} style={styles.buttonIcon}/>
                                     <Text style={[styles.title, {fontSize: 16}]}>Sign In With Google</Text>
