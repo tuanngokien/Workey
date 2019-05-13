@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "426000576581",
+    "firebase_url": "https://rising-amphora-235707.firebaseio.com",
+    "project_id": "rising-amphora-235707",
+    "storage_bucket": "rising-amphora-235707.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426000576581:android:34c2fcbfc966e0b7",
+        "android_client_info": {
+          "package_name": "com.workey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426000576581-5osvl85ub10qpd67r7ev6leb3docithj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.workey",
+            "certificate_hash": "01e9b601543bc966076d2d595ab141ee583a63a1"
+          }
+        },
+        {
+          "client_id": "426000576581-0o4c24jbbcmi9mkiqs1kh87p50ki5f7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHrsI0sln-IuGZxjc3nJZtTeV0Mp1737Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426000576581-0o4c24jbbcmi9mkiqs1kh87p50ki5f7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
