@@ -1,10 +1,11 @@
 import React from "react";
-import {View, StyleSheet, Text, ImageBackground, TouchableWithoutFeedback, StatusBar} from "react-native";
+import {View, StyleSheet, Text, TouchableWithoutFeedback, StatusBar, Image} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from "react-native-vector-icons/FontAwesome";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import Input from "../../components/Input";
-
+import WorkeyLogo from "../../assets/images/icons/w.png";
+// import {facebookLogin} from "../../actions/facebook";
 export const styles = StyleSheet.create({
     imageBackground: {
         // width: '100%',
@@ -38,7 +39,7 @@ export const styles = StyleSheet.create({
         fontSize: 14,
     },
     divider: {
-        width: "22%",
+        width: "100%",
         height: 5,
         backgroundColor: "#fff",
         borderRadius: 10,
@@ -93,6 +94,10 @@ export default class IntroScreen extends React.Component {
         this.props.navigation.goBack()
     };
 
+    onFBLogin = () => {
+        // facebookLogin()
+    };
+
     render() {
         return (
             <LinearGradient start={{x: 0, y: 1}} end={{x: 1, y: 0}} colors={["#00A0C3", "#2580B3", "#00A0C3", "#2580B3"]} style={{flex: 1}}>
@@ -102,8 +107,13 @@ export default class IntroScreen extends React.Component {
                         <IonIcon name={"md-arrow-round-back"} color={"#fff"} size={30}/>
                     </TouchableWithoutFeedback>
                     <View style={{height: "90%"}}>
-                        <Text style={[styles.title]}>Sign In</Text>
-                        <View style={styles.divider}/>
+                        <View style={[styles.rowContainer, {justifyContent: "space-between"}]}>
+                            <View>
+                                <Text style={[styles.title]}>Sign In</Text>
+                                <View style={styles.divider}/>
+                            </View>
+                            <Image source={WorkeyLogo} style={styles.logo}/>
+                        </View>
                         <View>
                             <Input label="Email address" labelStyle={styles.label} inputStyle={styles.input} inputContainerStyle={styles.inputContainer}/>
                             <Input label="Password" labelStyle={styles.label} inputStyle={styles.input} secureTextEntry={true} inputContainerStyle={styles.inputContainer}/>
@@ -117,7 +127,7 @@ export default class IntroScreen extends React.Component {
                         </View>
                         <Text style={[styles.title, {textAlign: "center", fontSize: 15}]}>or</Text>
                         <View style={styles.buttonContainer}>
-                            <TouchableWithoutFeedback>
+                            <TouchableWithoutFeedback onPress={this.onFBLogin}>
                                 <View style={[styles.signInButton, {backgroundColor: "#4267b2"}]}>
                                     <Icon name={"facebook-f"} style={styles.buttonIcon}/>
                                     <Text style={[styles.title, {fontSize: 16}]}>Sign In With Facebook</Text>
