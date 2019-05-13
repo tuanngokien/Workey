@@ -104,7 +104,7 @@ export default class BasicProfileContainer extends React.Component {
                                                      color={"rgba(0, 138, 216, .7)"} borderColor={"transparent"}/>
                             </View>
                             <View style={{flex: 0.17, flexDirection: "row", justifyContent: "flex-end"}}>
-                                <TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback onPress={this.props.onEdit}>
                                     <View style={styles.editProfileButton}>
                                         <Icon name={"edit-2"} size={20}/>
                                     </View>

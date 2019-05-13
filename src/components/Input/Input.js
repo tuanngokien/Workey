@@ -39,16 +39,19 @@ const styles = StyleSheet.create({
 
 export default class MyInput extends React.Component {
     render() {
-        const {inputContainerStyle, label, value, placeholder, children, iconName} = this.props;
-        const finalStyle = StyleSheet.flatten([styles.inputContainer, inputContainerStyle]);
+        const {inputContainerStyle, label, value, placeholder, children, iconName, labelStyle, inputStyle, secureTextEntry} = this.props;
+        const finalContainerStyle = StyleSheet.flatten([styles.inputContainer, inputContainerStyle]);
+        const finalLabelStyle = StyleSheet.flatten([styles.label, labelStyle]);
+        const finalInputStyle = StyleSheet.flatten([styles.input, inputStyle]);
         return (
-            <View style={finalStyle}>
-                <Text style={styles.label}>{label}</Text>
+            <View style={finalContainerStyle}>
+                <Text style={finalLabelStyle}>{label}</Text>
                 <View style={styles.rowContainer}>
                     <TextInput
-                        style={styles.input}
+                        style={finalInputStyle}
                         value={value}
                         placeholder={placeholder}
+                        secureTextEntry={secureTextEntry}
                     />
                     <Icon name={iconName} size={25} color={"rgba(117, 117, 117, .5)"}/>
                 </View>

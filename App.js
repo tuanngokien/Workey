@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {View, Text, StatusBar} from 'react-native';
 import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from "./src/screens/Home";
@@ -11,6 +10,7 @@ import Icon from "react-native-vector-icons/Feather";
 import EIcon from "react-native-vector-icons/Entypo";
 import {TABS, TABBAR_ICONS, MAIN_COLOR} from "./src/constants";
 import {YellowBox} from 'react-native';
+import SignInScreen from "./src/screens/SignIn";
 
 
 YellowBox.ignoreWarnings(['Remote debugger']);
@@ -74,11 +74,20 @@ const TabNavigator = createBottomTabNavigator({
     }
 });
 
-const AppContainer = createAppContainer(TabNavigator);
+const MainContainer = createAppContainer(TabNavigator);
 var SQLite = require('react-native-sqlite-storage');
 export const db = SQLite.openDatabase({name:"user",createFromLocation:"~workey.db"})
 export default class App extends React.Component {
+    state = {
+        signedIn: false
+    };
+
     render() {
-        return <AppContainer/>;
+        let {signedIn} = this.state;
+        if(signedIn){
+            return <MainContainer/>;
+        }else{
+            return <SignInScreen/>;
+        }
     }
 }

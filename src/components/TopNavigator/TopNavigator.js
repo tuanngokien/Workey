@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, StatusBar, StyleSheet} from "react-native"
 import {Avatar, Image} from 'react-native-elements';
-import WorkplaceLogo from "../../assets/images/icons/w.png";
+import WorkeyLogo from "../../assets/images/icons/w.png";
 
 const styles = StyleSheet.create({
     container: {
@@ -40,7 +40,7 @@ class TopNavigator extends React.Component {
                     backgroundColor="transparent"
                 />
                 <Image
-                    source={WorkplaceLogo}
+                    source={WorkeyLogo}
                     style={{width: 35, height: 35}}
                     resizeMode={"contain"}
                 />

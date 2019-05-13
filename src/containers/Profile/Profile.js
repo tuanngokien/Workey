@@ -9,7 +9,7 @@ export default class ProfileContainer extends React.Component {
         return (
             <ScrollView scrollViewStyle={{backgroundColor: "#ffffff"}}>
                 <ProfileLandingContainer/>
-                <BasicProfileContainer/>
+                <BasicProfileContainer onEdit={this.props.onEdit}/>
             </ScrollView>
         )
     }
