@@ -72,16 +72,21 @@ class ChatConversations extends React.Component {
     }));
     console.log(messages);
     let docUser = "user_" + this.state.user.user_id;
-    chatRef.doc(docUser).updated({
-      messages : firebase.firestore.FieldValue.arrayUnion({
-        _id :"textmoi",
-        createdAt:"11:12 PM",
-        text : "Test",
-        user :{
-          _id : 1
-        }
-      })
-    });
+    
+    // chatRef.doc(docUser).where("listchat","==",0).messages.set({
+    //       _id :"textmoi",
+    //       createdAt:"11:12 PM",
+    //       text : "Test",
+    //       user :{
+    //         _id : 1
+    //       }
+
+    // }).then(()=>{
+    //   console.log("good add");
+    // }).catch((e)=>{console.log(e)})
+
+    
+
 
   }
   handle(text, id, user_id, name, avatar, createdAt) {
