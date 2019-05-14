@@ -20,3 +20,12 @@ export const NotiDivider = (props) => (
     //marginHorizontal: "0%"
     }, props.style]}/>
 )
+export const SettingDivider = (props) => (
+    <View height={0.1} style={[{
+        borderBottomColor: "rgb(218, 220, 224)",
+        borderBottomWidth: 1,
+        marginTop:-10,
+        width: "auto"
+    //marginHorizontal: "0%"
+    }]}/>
+)

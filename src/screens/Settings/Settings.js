@@ -18,7 +18,9 @@ import { db } from "../../../App"
 import { RkSwitch } from '../../../node_modules/react-native-ui-kitten/src/components/switch/rkSwitch.android';
 import AvatarUser from "../../components/AvatarUser/AvatarUser"
 import BaseLandingContainer from "../../containers/BaseLanding"
-import HomeBackground from "../../assets/images/background/sky.png";
+import HomeBackground from "../../assets/images/avatar/avatar5.jpeg";
+import Icon from "react-native-elements/src/icons/Icon";
+import {SettingDivider, Divider,NotiDivider} from "../../components/Divider";
 
 let styles = StyleSheet.create({
     container: {
@@ -31,7 +33,9 @@ let styles = StyleSheet.create({
         fontSize: 20,
     },
     textRow: {
-        fontSize: 15,
+        fontSize: 20,
+        color:"black",
+        marginBottom:"2%"
     },
     section: {
         marginVertical: 25,
@@ -41,14 +45,15 @@ let styles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        //justifyContent: 'space-between',
         paddingHorizontal: 12.5,
         // borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: "white",
-        alignItems: 'center',
+        borderColor: "black",
+        //alignItems: 'center',
     },
     rowButton: {
         flex: 1,
+        flexDirection:"row",
         paddingVertical: 18,
     },
     switch: {
@@ -58,7 +63,11 @@ let styles = StyleSheet.create({
         width: '100%',
         height: 190,
         resizeMode: "cover",
+        backgroundColor:"transparent"
     },
+    container:{
+        marginLeft: "3%"
+    }
 
 })
 
@@ -87,8 +96,8 @@ class SettingsScreen extends React.Component {
                 <AvatarUser></AvatarUser>
             </BaseLandingContainer> */}
                 <View style={{marginBottom:122}}>
-                <ImageBackground source={HomeBackground} style={styles.imageBackground}
-                    imageStyle={{ borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}>
+                <ImageBackground source={HomeBackground} blurRadius={3} style={styles.imageBackground}
+                    imageStyle={{ borderBottomLeftRadius: 10, borderBottomRightRadius: 10}}>
 
                     <StatusBar translucent backgroundColor={"transparent"} />
                     <View>
@@ -96,9 +105,45 @@ class SettingsScreen extends React.Component {
                     </View>
                 </ImageBackground>
                 </View>
-                
-                <View style={styles.section}>
-                    <View style={[styles.heading, styles.row]}>
+                <View>                
+                    {/* <Icon name="pencil" type="font-awesome" color="black" size ={35} iconStyle={{paddingBottom:5}} /> */}
+                </View>
+                <View style={styles.container}>
+                    <SettingDivider/>
+                    <TouchableOpacity style={styles.rowButton}>
+                        <Text style={styles.textRow}>Preferences</Text>
+                        <View>
+                        <Icon name="sliders" type="font-awesome" color="black" size ={25} containerStyle={{marginLeft:"65%"}}  />
+                        </View>
+                    </TouchableOpacity>
+                    
+                </View>
+                <View style={styles.container}>
+                    <SettingDivider/>
+                    <TouchableOpacity style={styles.rowButton}>
+                        <Text style={styles.textRow}>Account</Text>
+                        <Icon name="cog" type="font-awesome" color="black" size ={25} containerStyle={{marginLeft:"65%"}}  />
+                    </TouchableOpacity>                    
+                </View>
+                <View style={styles.container}>
+                    <SettingDivider/>
+                    <TouchableOpacity style={styles.rowButton}>
+                        <Text style={styles.textRow}>Help Center</Text>
+                        <Icon name="question" type="font-awesome" color="black" size ={25} containerStyle={{marginLeft:"55%"}}  />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.container}>
+                    <SettingDivider/>
+                    <TouchableOpacity style={styles.rowButton}>
+                        <Text style={styles.textRow}>Logout</Text>
+                        <Icon name="sign-out" type="font-awesome" color="black" size ={25} containerStyle={{marginLeft:"68%"}}  />
+                    </TouchableOpacity>     
+                    <SettingDivider/>               
+                </View>
+                {/* <View style={styles.section}>
+                     <View style={[styles.heading, styles.row,{flexDirection:"column"}]}> 
+                    
+                        <SettingDivider style={{borderColor:"black"}}/>
                         <Text style={styles.textHeader}>PROFILE SETTINGS</Text>
                     </View>
                     <View style={styles.row}>
@@ -144,7 +189,7 @@ class SettingsScreen extends React.Component {
                             <Text style={styles.textRow}>Logout</Text>
                         </TouchableOpacity>
                     </View>
-                </View>
+                </View> */}
             </ScrollView>
         );
     }
