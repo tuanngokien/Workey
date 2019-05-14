@@ -4,7 +4,11 @@ export function isAuthenticated() {
     firebase.auth().onAuthStateChanged(user => {
         console.warn(user);
     });
-//     firebase.auth().signOut(user => {
-//         console.warn(user);
-//     });
+}
+
+
+export function signOut() {
+    firebase.auth().signOut(user => {
+        console.warn(user);
+    });
 }

@@ -30,7 +30,6 @@ const TabNavigator = createBottomTabNavigator({
                     <EIcon
                         name="dot-single"
                         style={{color: "#00ADFF", fontSize: 30, position: 'absolute', top: -13, right: -13}}
-
                     />
                 </View>
             )
