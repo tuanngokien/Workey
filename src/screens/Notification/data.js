@@ -20,7 +20,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
 
     },
     {
@@ -32,7 +32,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -43,7 +43,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -65,7 +65,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -87,7 +87,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -98,7 +98,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -109,7 +109,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -120,7 +120,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -131,7 +131,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -142,7 +142,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -153,7 +153,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     },
     {
         user:{
@@ -164,7 +164,7 @@ var Notification = [
             time: "1 hour ago"
         },
         noti:" has send you a invitation to interview ",
-        category:"invite",icon:"send",color:"orange"
+        category:"invite",icon:"send",color:"green"
     }
 ];
 export default Notification;
