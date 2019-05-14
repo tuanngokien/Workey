@@ -1,9 +1,9 @@
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 import {Alert} from "react-native";
-import {signInUser} from "./utils";
+import {signInUser, signUpUser} from "./utils";
 
-export function facebookLogin() {
+export function facebookLogin(isNewUser) {
     return async (dispatch) => {
         try {
             const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
@@ -28,19 +28,18 @@ export function facebookLogin() {
             // login with credential
             const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
             const user = firebaseUserCredential.user;
-            let {displayName, email, photoURL} = user;
-            firebase.firestore().collection('user').doc(user.uid).set({displayName, email, photoURL})
-                .then((data) => {
-                    console.log('data ' , data)
-                }).catch((error) => {
-                    console.log(error);
-            });
-
+            if(isNewUser){
+                signUpUser(user);
+            }
             dispatch(signInUser(user));
         } catch (e) {
             console.log(e);
             Alert.alert(e.toString());
         }
     }
+}
+
+export function facebookSignUp() {
+    return facebookLogin(true);
 }
 

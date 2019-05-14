@@ -5,6 +5,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import {DEVICE_HEIGHT, DEVICE_WIDTH, GOOGLE_MAPS_API_KEY} from "../../constants";
 import MarkerIcon from "../../assets/images/icons/marker.png";
 import {styles as titleStyles} from "../../containers/TopEmployers";
+import {SimpleTopNavigator} from "../../components/TopNavigator";
 
 
 const width = DEVICE_WIDTH * 0.9, height = DEVICE_HEIGHT * 0.27;
@@ -82,13 +83,17 @@ export default class MyMapView extends React.Component {
         this.setState({distance});
     };
 
+    onBack = () => {
+        this.props.navigation.goBack();
+    };
+
 
     render() {
         const {currentLocationCoordinate, companyLocationCoordinate, initialRegion, distance} = this.state;
         // console.log(currentLocationCoordinate);
         return (
             <View>
-                
+                <SimpleTopNavigator title={"Job Direction"} rightIconName="md-wifi" onBack={this.onBack}/>
                 <View style={styles.mapContainer}>
                     <MapView
                         initialRegion={initialRegion}

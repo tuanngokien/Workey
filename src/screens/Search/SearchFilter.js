@@ -11,15 +11,6 @@ class SearchFilterScreen extends React.Component {
         this.props.navigation.navigate(SEARCH_RESULT_SCREEN)
     };
 
-    componentDidMount() {
-        firebase.firestore().collection('users').doc("yl9d4fqcHSAXwi0xBaZ").set({"ssd": "sassa"})
-            .then((data) => {
-                console.log('data ' , data)
-            }).catch((error) => {
-            console.log(error);
-        });
-    }
-
     render() {
         return (
             <ScrollView>
