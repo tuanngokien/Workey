@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export const Navigator = ({title, rightIconName, overlayOpacity, iconVisible, onBack}) => {
+export const Navigator = ({title, leftIconName, rightIconName, overlayOpacity, iconVisible, onBack, onRightPress}) => {
     return (
         <View style={[styles.overlayContainer, {backgroundColor: `rgba(0,0,0,${overlayOpacity || 0})`}]}>
             <StatusBar translucent backgroundColor={"transparent"}/>
@@ -37,14 +37,16 @@ export const Navigator = ({title, rightIconName, overlayOpacity, iconVisible, on
             <View style={styles.topNavigatorContainer}>
                 <View style={{flex: 1, alignItems: "flex-start"}}>
                     <TouchableWithoutFeedback onPress={onBack}>
-                        <Icon name={"md-arrow-round-back"} style={styles.icon}/>
+                        <Icon name={leftIconName === null ? null : "md-arrow-round-back"} style={styles.icon}/>
                     </TouchableWithoutFeedback>
                 </View>
                 <View style={{flex: 1, alignItems: "center"}}>
                     <Text style={styles.headerTitle}>{title}</Text>
                 </View>
                 <View style={{flex: 1, alignItems: "flex-end"}}>
-                    <Icon name={rightIconName} style={[styles.icon]}/>
+                    <TouchableWithoutFeedback onPress={onRightPress}>
+                        <Icon name={rightIconName} style={[styles.icon]}/>
+                    </TouchableWithoutFeedback>
                 </View>
             </View>}
         </View>)

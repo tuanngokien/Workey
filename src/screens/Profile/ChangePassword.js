@@ -1,7 +1,7 @@
 import React from "react";
 import {View} from "react-native";
 import {SimpleTopNavigator} from "../../components/TopNavigator";
-import EditProfileContainer from "../../containers/EditProfile";
+import ChangePasswordContainer from "../../containers/ChangePassword";
 
 
 class EditProfileScreen extends React.Component {
@@ -12,8 +12,8 @@ class EditProfileScreen extends React.Component {
     render() {
         return (
             <View>
-                <SimpleTopNavigator title={"Edit Profile"} rightIconName="md-done-all" onBack={this.onBack}/>
-                <EditProfileContainer/>
+                <SimpleTopNavigator title={"Edit Password"} rightIconName="md-done-all" onBack={this.onBack}/>
+                <ChangePasswordContainer/>
             </View>
         )
     }
