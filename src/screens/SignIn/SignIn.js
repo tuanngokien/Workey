@@ -5,7 +5,6 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import Input from "../../components/Input";
 import WorkeyLogo from "../../assets/images/icons/w.png";
-import {facebookLogin, googleLogin, emailLogin, isAuthenticated} from "../../actions/auth";
 
 export const styles = StyleSheet.create({
     imageBackground: {
@@ -90,26 +89,36 @@ export const styles = StyleSheet.create({
     },
 });
 
-export default class IntroScreen extends React.Component {
+export default class SignInScreen extends React.Component {
+    state = {
+        username: "",
+        password: "",
+    };
+
+    onUsernameChange = (username) => {
+        this.setState({username});
+    };
+
+    onPasswordChange = (password) => {
+        this.setState({password});
+    };
+
     onBack = () => {
-        this.props.navigation.goBack()
+        this.props.navigation.goBack();
     };
 
     onFBLogin = () => {
-        facebookLogin()
+        this.props.facebookLogin();
     };
 
     onGoogleLogin = () => {
-        googleLogin()
+        this.props.googleLogin();
     };
 
     onEmailLogin = () => {
-        emailLogin()
+        let {username, password} = this.state;
+        this.props.emailLogin(username, password);
     };
-
-    componentDidMount() {
-        isAuthenticated()
-    }
 
     render() {
         return (
@@ -130,9 +139,10 @@ export default class IntroScreen extends React.Component {
                         </View>
                         <View>
                             <Input label="Email address" labelStyle={styles.label} inputStyle={styles.input}
-                                   inputContainerStyle={styles.inputContainer}/>
+                                   inputContainerStyle={styles.inputContainer} onValueChange={this.onUsernameChange}/>
                             <Input label="Password" labelStyle={styles.label} inputStyle={styles.input}
-                                   secureTextEntry={true} inputContainerStyle={styles.inputContainer}/>
+                                   secureTextEntry={true} inputContainerStyle={styles.inputContainer}
+                                   onValueChange={this.onPasswordChange}/>
                             <View style={[styles.rowContainer, {justifyContent: "space-between"}]}>
                                 <TouchableWithoutFeedback onPress={this.onEmailLogin}>
                                     <View style={[styles.customSignInButton]}>

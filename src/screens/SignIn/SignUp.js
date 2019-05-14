@@ -7,7 +7,7 @@ import Input from "../../components/Input";
 import {styles} from "./SignIn";
 import WorkeyLogo from "../../assets/images/icons/w.png";
 
-export default class IntroScreen extends React.Component {
+export default class SignUpScreen extends React.Component {
     onBack = () => {
         this.props.navigation.goBack()
     };

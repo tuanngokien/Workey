@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet, TouchableWithoutFeedback} from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export const styles = StyleSheet.create({
@@ -27,19 +27,21 @@ export const styles = StyleSheet.create({
 
 export default class SettingCard extends React.Component {
     render() {
-        const {iconName, iconRightVisible, title} = this.props;
+        const {iconName, iconRightVisible, title, onPress} = this.props;
         return (
-            <View style={styles.container}>
-                <View style={[styles.container, {marginVertical: 0, borderBottomWidth: 0, flex: 0.8}]}>
-                    <View style={{flex: 0.16}}>
-                        <Icon name={iconName} style={styles.leftIcon}/>
+            <TouchableWithoutFeedback onPress={onPress}>
+                <View style={styles.container}>
+                    <View style={[styles.container, {marginVertical: 0, borderBottomWidth: 0, flex: 0.8}]}>
+                        <View style={{flex: 0.16}}>
+                            <Icon name={iconName} style={styles.leftIcon}/>
+                        </View>
+                        <View style={{flex: 0.84}}>
+                            <Text style={styles.title}>{title}</Text>
+                        </View>
                     </View>
-                    <View style={{flex: 0.84}}>
-                        <Text style={styles.title}>{title}</Text>
-                    </View>
+                    {iconRightVisible !== false && <Icon name={"ios-arrow-forward"} style={styles.rightIcon}/>}
                 </View>
-                {iconRightVisible !== false && <Icon name={"ios-arrow-forward"} style={styles.rightIcon}/>}
-            </View>
+            </TouchableWithoutFeedback>
         )
     }
 }
