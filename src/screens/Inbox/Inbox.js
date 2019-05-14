@@ -13,10 +13,9 @@ import { SearchBar } from "react-native-elements"
 import Conversations from "../Inbox/data"
 import { Avatar } from "react-native-elements"
 import BaseLandingContainer from "../../containers/BaseLanding/index"
-import ChatConversations from "../../components/Chat/Chat"
+import firebase from "react-native-firebase"
+import {chatRef} from "../../../firestore"
 
-import db from "../../../config-firebase"
-// import console = require("console");
 let styles = StyleSheet.create({
     containerSearchBar: {
         backgroundColor: "transparent",
@@ -60,7 +59,7 @@ class InboxScreen extends React.Component {
         super(props);
         this.state = {
             search: "",
-            conversations:null,
+            conversations: null,
         };
     }
 
@@ -88,15 +87,15 @@ class InboxScreen extends React.Component {
     renderUser = ({ item }) => {
         if (this.state.search == "") {
             return (
-                <TouchableOpacity onPress={this.tranferChat(item.user)} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
+                <TouchableOpacity onPress={this.tranferChat(item)} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
                     <View style={{ flexDirection: "row", }}>
                         <View style={{ width: "15%" }}>
                             <Avatar
                                 rounded
 
-                                source={
-                                    item.user.avatar
-                                }
+                                source={{
+                                    uri: item.avatar,
+                                }}
                                 size={50}
                                 containerStyle={{
                                     borderRadius: 100,
@@ -106,100 +105,72 @@ class InboxScreen extends React.Component {
                             />
                         </View>
                         <View style={{ width: "65%" }}>
-                            <Text style={{ fontWeight: "400", fontSize: 16, color: "black" }}>{item.user.name}</Text>
+                            <Text style={{ fontWeight: "400", fontSize: 16, color: "black" }}>{item.name}</Text>
                             {/* <Text>{item.messages[item.messages.length -1].text}</Text> */}
-                            {this.handleMessage(item.messages[item.messages.length - 1].text)}
+                            {this.handleMessage(item.messages[0].text)}
                         </View>
                         <View style={{ width: "20%", right: 0, position: "absolute" }}>
-                            <Text>{item.user.time}</Text>
+                            <Text>{item.messages[0].createAt}</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
             )
         }
-        else {
-            if (item.user.name.search(this.state.search)) {
-                <TouchableOpacity onPress={this.tranferChat(item.user)} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
-                    <View style={{ flexDirection: "row", }}>
-                        <View style={{ width: "15%" }}>
-                            <Avatar
-                                rounded
-
-                                source={
-                                    item.user.avatar
-                                }
-                                size={50}
-                                containerStyle={{
-                                    borderRadius: 100,
-                                    borderWidth: 1.5,
-                                    borderColor: "white"
-                                }}
-                            />
-                        </View>
-                        <View style={{ width: "65%" }}>
-                            <Text style={{ fontWeight: "400", fontSize: 16, color: "black" }}>{item.user.name}</Text>
-                            {/* <Text>{item.messages[item.messages.length -1].text}</Text> */}
-                            {this.handleMessage(item.messages[item.messages.length - 1].text)}
-                        </View>
-                        <View style={{ width: "20%", right: 0, position: "absolute" }}>
-                            <Text>{item.user.time}</Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-            }
-        }
     };
-    componentDidMount(){
-        let chatRef = db.collection("chat");
-        userRef.get().then((res) => { 
-        console.log(res);
-            this.setState({
-            conversations : Conversations
+    getListChat(user_id) {
+        let docUser = "user_" + user_id;
+        chatRef.doc(docUser).get().then((res) => {
+            this.setState({ conversations: res._data })
         })
-    })
 
-
+    };
+    componentDidMount() {
+        this.getListChat(1);
     };
 
     render() {
-        console.log(db);
+        if (this.state.conversations != null) {
+            return (
+                <ScrollView style={styles.screen}>
+                    <BaseLandingContainer style={styles.header}>
 
-        return (
-            <ScrollView style={styles.screen}>
-                <BaseLandingContainer style={styles.header}>
 
+                        <View>
+                            <SearchBar placeholder="Type here..."
+                                onChangeText={this.updateSearch}
+                                platform={"android"}
+                                value={this.state.search}
+                                round={true}
+                                underlineColorAndroid={"#DDE1E4"}
+                                containerStyle={styles.containerSearchBar}
+                                inputContainerStyle={{
+                                    backgroundColor: "white",
+                                    borderRadius: 20,
+                                    marginRight: 10,
+                                }}
+                            />
+                        </View>
+                    </BaseLandingContainer>
+                    <ScrollView style={styles.containerList}>
+                        <FlatList
+                            data={this.state.conversations.listchat}
+                            renderItem={this.renderUser}
+                            keyExtractor={(item, index) => item.user_id.toString()}
 
-                    <View>
-                        <SearchBar placeholder="Type here..."
-                            onChangeText={this.updateSearch}
-                            platform={"android"}
-                            value={this.state.search}
-                            round={true}
-                            underlineColorAndroid={"#DDE1E4"}
-                            // #DDE1E4
-                            containerStyle={styles.containerSearchBar}
-                            inputContainerStyle={{
-                                backgroundColor: "white",
-                                borderRadius: 20,
-                                marginRight: 10,
-                            }}
                         />
-                    </View>
-                </BaseLandingContainer>
-                <ScrollView style={styles.containerList}>
-                    <FlatList
-                        data={this.state.conversations}
-                        renderItem={this.renderUser}
-                        keyExtractor={(item, index) => item.user.id.toString()}
 
-                    />
 
+                    </ScrollView>
 
                 </ScrollView>
 
-            </ScrollView>
-
-        );
+            );
+        }
+        else{
+            return(
+                <View></View>
+            )
+        }
     }
 }
 

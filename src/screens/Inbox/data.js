@@ -1,5 +1,3 @@
-import db from "../../../config-firebase"
-
 var Conversations = [
     {
       user:{

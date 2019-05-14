@@ -18,6 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.pgsqlite.SQLitePluginPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -31,13 +33,15 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactNativeOneSignalPackage(),
-            new MapsPackage(),
-            new LinearGradientPackage(),
-            new SvgPackage(),
-            new VectorIconsPackage(),
-            new RNGestureHandlerPackage(),
-            new SQLitePluginPackage()
+          new ReactNativeOneSignalPackage(),
+          new MapsPackage(),
+          new LinearGradientPackage(),
+          new SvgPackage(),
+          new VectorIconsPackage(),
+          new RNGestureHandlerPackage(),
+          new SQLitePluginPackage(),
+         new RNFirebasePackage(),
+          new RNFirebaseFirestorePackage()
       );
     }
 

@@ -2,8 +2,10 @@ import React from "react";
 import { View, StyleSheet, Image, Text, Alert, ScrollView } from "react-native";
 import Conversations from "../../screens/Inbox/data"
 import TopNavigator from "../TopNavigator";
-import { GiftedChat,Send } from "react-native-gifted-chat";
+import { GiftedChat, Send } from "react-native-gifted-chat";
 import HeaderChat from "../Chat/HeaderChat"
+import {chatRef} from "../../../firestore"
+import firebase from "react-native-firebase"
 let styles = StyleSheet.create({
 
   balloon: {
@@ -24,34 +26,63 @@ class ChatConversations extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: [],
+      messages: null,
+      user :{
+        name :"Hoang Anh Tuan",
+        avatar :"https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+        user_id : 1,
+    }
     };
   }
 
   componentWillMount() {
-    let user = this.props.navigation.getParam('item');
-    this.setState({
-      messages: [
+    let data = this.props.navigation.getParam('item');
+    console.log(data);
+    this.setState({ messages: data.messages })
+    // this.setState({
+    //   messages: [
 
-        {
-          text: "1",
-          user: {
-            _id: 2,
-            name: user.name,
-            avatar: user.avatar
-          },
-          _id: 1,
-          createdAt: new Date(),
-        },
-      ]
-    });
+    //     {
+    //       text: "1",
+    //       user: {
+    //         _id: 2,
+    //         name: "kk1",
+    //         avatar: ""
+    //       },
+    //       _id: 1,
+    //       createdAt: new Date(),
+    //     },
+    //     {
+    //       text: "2",
+    //       user: {
+    //         _id: 1,
+    //         name: "hk2",
+    //         avatar: ""
+    //       },
+    //       _id: 11,
+    //       createdAt: new Date(),
+    //     },
+    //   ]
+    // });
   }
 
   onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages)
-
     }));
+    console.log(messages);
+    let docUser = "user_" + this.state.user.user_id;
+    chatRef.doc(docUser).updated({
+      messages : firebase.firestore.FieldValue.arrayUnion({
+        _id :"textmoi",
+        createdAt:"11:12 PM",
+        text : "Test",
+        user :{
+          _id : 1
+        }
+      })
+    });
+
   }
   handle(text, id, user_id, name, avatar, createdAt) {
     return {
@@ -71,34 +102,41 @@ class ChatConversations extends React.Component {
   renderSend(props) {
     return (
       <Send
-          {...props}
+        {...props}
       >
-          <View style={{marginRight: 10, marginBottom: 5,height:20,width:20}}>
-              <Image source={require("../../assets/images/icons/goback.png")} resizeMode={'center'}/>
-          </View>
+        <View style={{ marginRight: 10, marginBottom: 5, height: 20, width: 20 }}>
+          <Image source={require("../../assets/images/icons/goback.png")} resizeMode={'center'} />
+        </View>
       </Send>
-  );
-}
+    );
+  }
 
 
   render() {
     let navigation = this.props.navigation;
     let name = navigation.getParam('item').name;
-    return (
-      <View style={{height:"100%", width:"100%"}}>
-        <HeaderChat navigation={navigation} name={name}/>
-      
-      <GiftedChat
-        messages={this.state.messages}
-        scrollToBottom={true}
-        onSend={messages => this.onSend(messages)}
-        
-        user={{
-          _id: 1
-        }}
-      />    
-      </View>   
-    )
+    if (this.state.messages != null) {
+      return (
+        <View style={{ height: "100%", width: "100%" }}>
+          <HeaderChat navigation={navigation} name={name} />
+
+          <GiftedChat
+            messages={this.state.messages}
+            scrollToBottom={true}
+            onSend={messages => this.onSend(messages)}
+
+            user={{
+              _id: 1
+            }}
+          />
+        </View>
+      )
+    }
+    else {
+      return (
+        <View></View>
+      )
+    }
   }
 }
 export default ChatConversations;
