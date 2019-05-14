@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: "5%",
         backgroundColor: "#7376FF",
     },
-    titleContainer: {
-        fontSize: 19,
-        fontFamily: "Poppins-Bold",
+    title: {
+        fontSize: 18,
+        fontFamily: "Nunito-Bold",
         color: "#ffffff"
     },
     avatarContainer: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     overlayAvatarContainer: {
         borderWidth: 2.5,
         borderColor: 'transparent'
-    }
+    },
 });
 
 class TopNavigator extends React.Component {

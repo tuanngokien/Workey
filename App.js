@@ -30,7 +30,6 @@ const TabNavigator = createBottomTabNavigator({
                     <EIcon
                         name="dot-single"
                         style={{color: "#00ADFF", fontSize: 30, position: 'absolute', top: -13, right: -13}}
-
                     />
                 </View>
             )
@@ -52,7 +51,7 @@ const TabNavigator = createBottomTabNavigator({
     [TABS.Inbox]: InboxScreen,
     [TABS.Settings]: SettingsScreen,
 }, {
-    initialRouteName: TABS.Settings,
+    initialRouteName: TABS.Notification,
     defaultNavigationOptions: ({navigation}) => ({
         tabBarIcon: ({focused, tintColor}) => {
             const {routeName} = navigation.state;
