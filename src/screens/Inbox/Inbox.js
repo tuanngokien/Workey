@@ -126,11 +126,11 @@ class InboxScreen extends React.Component {
 
     };
     componentDidMount() {
-        this.getListChat(1);
+        // this.getListChat(1);
     };
 
     render() {
-        if (this.state.conversations != null) {
+        if (this.state.conversations == null) {
             return (
                 <ScrollView style={styles.screen}>
                     <BaseLandingContainer style={styles.header}>
@@ -153,12 +153,12 @@ class InboxScreen extends React.Component {
                         </View>
                     </BaseLandingContainer>
                     <ScrollView style={styles.containerList}>
-                        <FlatList
+                        {/* <FlatList
                             data={this.state.conversations.listchat}
                             renderItem={this.renderUser}
                             keyExtractor={(item, index) => item.user_id.toString()}
 
-                        />
+                        /> */}
 
 
                     </ScrollView>

@@ -32,7 +32,7 @@ const TabNavigator = createBottomTabNavigator({
                         size={25}
                         color={tintColor}
                     />
-                    <NumberNotification number="1" /> 
+                    {/* <NumberNotification number="1" />  */}
                     <EIcon
                         name="dot-single"
                         style={{color: "#00ADFF", fontSize: 30, position: 'absolute', top: -13, right: -13}}
