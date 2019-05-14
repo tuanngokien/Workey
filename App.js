@@ -79,7 +79,7 @@ var SQLite = require('react-native-sqlite-storage');
 export const db = SQLite.openDatabase({name:"user",createFromLocation:"~workey.db"})
 export default class App extends React.Component {
     state = {
-        signedIn: false
+        signedIn: true
     };
 
     render() {
