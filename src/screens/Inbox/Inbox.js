@@ -13,6 +13,7 @@ import Conversations from "../Inbox/data"
 import { Avatar } from "react-native-elements"
 import BaseLandingContainer from "../../containers/BaseLanding"
 // import { FlatList } from "react-native-gesture-handler";
+import firebase from "react-native-firebase"
 
 let styles = StyleSheet.create({
     containerSearchBar: {
@@ -54,7 +55,14 @@ class InboxScreen extends React.Component {
         search: "",
         conversations: Conversations,
     }
-
+    componentDidMount(){
+        firebase.firestore().collection('users').doc("yl9d4fqcHSAXwi0xBaZ").set({"ssd":"sasssssa"})
+                .then((data) => {
+                    console.log("done")
+                }).catch((error) => {
+                    console.log("error");
+            });
+    }
     updateSearch = search => {
         this.setState({ search });
     }
