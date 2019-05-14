@@ -151,8 +151,14 @@ android {
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
-    implementation project(':react-native-firebase')
     implementation project(':react-native-onesignal')
+    implementation project(':react-native-google-signin')
+    implementation project(':react-native-fbsdk')
+    implementation project(':react-native-firebase')
+    implementation "com.google.android.gms:play-services-base:16.1.0"
+    implementation "com.google.android.gms:play-services-maps:16.1.0"
+    implementation "com.google.firebase:firebase-auth:16.2.1"
+    implementation "com.google.firebase:firebase-core:16.0.8"
     implementation project(':react-native-maps')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-svg')
@@ -162,21 +168,12 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-sqlite-storage')
-    implementation project(':react-native-maps')
-    implementation 'com.google.firebase:firebase-core:16.0.1'
-    implementation "com.google.android.gms:play-services-base:15.0.1"
+   
     implementation "com.google.firebase:firebase-firestore:17.0.2"
-    // Required dependencies
-    //noinspection GradleCompatible
-    // implementation "com.google.firebase:firebase-core:16.0.8"
-    // implementation "com.google.android.gms:play-services-base:16.1.0"
-
-    /* -------------------------
-    *   OPTIONAL FIREBASE SDKS
-    * ------------------------- */
 
     
 
+    implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
 }
 
 
@@ -187,3 +184,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+apply plugin: 'com.google.gms.google-services'
+

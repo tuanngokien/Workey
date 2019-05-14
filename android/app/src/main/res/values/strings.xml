@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Workey</string>
+    <string name="facebook_app_id">445060059255480</string>
+    <string name="fb_login_protocol_scheme">fb445060059255480</string>
 </resources>

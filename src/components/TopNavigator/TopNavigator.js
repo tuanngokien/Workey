@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, StatusBar, StyleSheet} from "react-native"
 import {Avatar, Image} from 'react-native-elements';
-import WorkplaceLogo from "../../assets/images/icons/w.png";
+import WorkeyLogo from "../../assets/images/icons/w.png";
 
 const styles = StyleSheet.create({
     container: {
@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: "5%",
         backgroundColor: "#7376FF",
     },
-    titleContainer: {
-        fontSize: 19,
-        fontFamily: "Poppins-Bold",
+    title: {
+        fontSize: 18,
+        fontFamily: "Nunito-Bold",
         color: "#ffffff"
     },
     avatarContainer: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     overlayAvatarContainer: {
         borderWidth: 2.5,
         borderColor: 'transparent'
-    }
+    },
 });
 
 class TopNavigator extends React.Component {
@@ -40,7 +40,7 @@ class TopNavigator extends React.Component {
                     backgroundColor="transparent"
                 />
                 <Image
-                    source={WorkplaceLogo}
+                    source={WorkeyLogo}
                     style={{width: 35, height: 35}}
                     resizeMode={"contain"}
                 />
@@ -51,7 +51,7 @@ class TopNavigator extends React.Component {
                 <View style={{flexDirection: "row"}}>
                     <Avatar
                         rounded
-                        source={require("../../assets/images/avatar/avatar5.jpeg")}
+                        source={require("../../assets/images/avatar/avatar6_sm.jpg")}
                         size={47}
                         containerStyle={styles.avatarContainer}
                         overlayContainerStyle={styles.overlayAvatarContainer}

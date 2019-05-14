@@ -1,7 +1,7 @@
 import React from "react";
 import {SearchFilterContainer, SearchLandingContainer} from "../../containers/Search";
 import ScrollView from "../../components/ScrollView";
-import {SEARCH_RESULT_SCREEN} from "./constants";
+import {SEARCH_RESULT_SCREEN} from "./Tabs";
 
 
 

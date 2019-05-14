@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { View, Text, StatusBar } from 'react-native';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import {View, Text, StatusBar} from 'react-native';
+import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from "./src/screens/Home";
 import InboxScreen from "./src/screens/Inbox/Inbox";
 import InboxNavigator from "./src/screens/Inbox/index"
@@ -15,6 +15,7 @@ import {TABS, TABBAR_ICONS, MAIN_COLOR} from "./src/constants";
 import OneSignal from 'react-native-onesignal'; 
 import {YellowBox} from 'react-native';
 import NumberNotification from "./src/components/NumberNotification/NumberNotification"
+import SignInScreen from "./src/screens/SignIn";
 
 
 YellowBox.ignoreWarnings(['Remote debugger']);
@@ -32,6 +33,10 @@ const TabNavigator = createBottomTabNavigator({
                         color={tintColor}
                     />
                     <NumberNotification number="1" /> 
+                    <EIcon
+                        name="dot-single"
+                        style={{color: "#00ADFF", fontSize: 30, position: 'absolute', top: -13, right: -13}}
+                    />
                 </View>
             )
         }),
@@ -53,7 +58,7 @@ const TabNavigator = createBottomTabNavigator({
     [TABS.Inbox]: InboxNavigator,
     [TABS.Settings]: SettingsScreen,
 }, {
-    initialRouteName: TABS.Search,
+    initialRouteName: TABS.Settings,
     defaultNavigationOptions: ({navigation}) => ({
         tabBarIcon: ({focused, tintColor}) => {
             const {routeName} = navigation.state;
@@ -75,17 +80,20 @@ const TabNavigator = createBottomTabNavigator({
     }
 });
 
-const AppContainer = createAppContainer(TabNavigator);
+const MainContainer = createAppContainer(TabNavigator);
+var SQLite = require('react-native-sqlite-storage');
+export const db = SQLite.openDatabase({name:"user",createFromLocation:"~workey.db"})
 export default class App extends React.Component {
-    constructor(properties) {
-        super(properties);
-        OneSignal.init("3605c104-24a6-4fe5-ab81-a1ec69e66775");
-    
-        // OneSignal.addEventListener('received', this.onReceived);
-        // OneSignal.addEventListener('opened', this.onOpened);
-        // OneSignal.addEventListener('ids', this.onIds);
-      }
+    state = {
+        signedIn: true
+    };
+
     render() {
-        return <AppContainer />;
+        let {signedIn} = this.state;
+        if(signedIn){
+            return <MainContainer/>;
+        }else{
+            return <SignInScreen/>;
+        }
     }
 }

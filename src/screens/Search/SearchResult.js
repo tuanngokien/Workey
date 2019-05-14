@@ -2,7 +2,7 @@ import React from "react";
 import {View} from "react-native";
 import {SimpleTopNavigator} from "../../components/TopNavigator";
 import SearchResultsContainer from "../../containers/SearchResults";
-import {JOB_DETAIL_SCREEN} from "./constants";
+import {JOB_DETAIL_SCREEN} from "./Tabs";
 
 
 class SearchResultScreen extends React.Component {

@@ -9,7 +9,7 @@ export const ColoredDivider = (props) => (
     <Divider {...props} height={0.1} style={[{
         borderBottomColor: "rgb(218, 220, 224)",
         borderBottomWidth: 1,
-    marginHorizontal: "5%"
+        marginHorizontal: "5%"
     }, props.style]}/>
 )
 export const NotiDivider = (props) => (
