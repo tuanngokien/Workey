@@ -11,7 +11,7 @@ const RootStack = createStackNavigator(
         [PROFILE_SCREEN]: ProfileScreen,
     },
     {
-        initialRouteName: PROFILE_SCREEN,
+        initialRouteName: SETTING_SCREEN,
         defaultNavigationOptions: {
             header: null
         }

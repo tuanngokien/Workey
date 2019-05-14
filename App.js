@@ -51,7 +51,7 @@ const TabNavigator = createBottomTabNavigator({
     [TABS.Inbox]: InboxScreen,
     [TABS.Settings]: SettingsScreen,
 }, {
-    initialRouteName: TABS.Notification,
+    initialRouteName: TABS.Settings,
     defaultNavigationOptions: ({navigation}) => ({
         tabBarIcon: ({focused, tintColor}) => {
             const {routeName} = navigation.state;
