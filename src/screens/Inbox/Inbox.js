@@ -16,6 +16,7 @@ import BaseLandingContainer from "../../containers/BaseLanding/index"
 import firebase from "react-native-firebase"
 import {chatRef} from "../../../firestore"
 
+
 let styles = StyleSheet.create({
     containerSearchBar: {
         backgroundColor: "transparent",
@@ -60,6 +61,7 @@ class InboxScreen extends React.Component {
         this.state = {
             search: "",
             conversations: null,
+            user :null,
             
         };
     }
@@ -125,8 +127,12 @@ class InboxScreen extends React.Component {
         })
 
     };
-    componentDidMount() {
+    async componentDidMount() {
         // this.getListChat(1);
+        // console.log(firebase.auth().currentUser);
+        // this.setState({user : firebase.auth().currentUser});
+        let cuser = await firebase.auth().currentUser;
+        firebase.firestore().collection("user").doc(cuser.uid).set(cuser)
     };
 
     render() {
