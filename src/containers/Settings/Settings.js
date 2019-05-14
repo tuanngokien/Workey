@@ -18,7 +18,7 @@ export default class SettingsContainer extends React.Component {
                     <SettingCard iconName={"md-list"} title={"Edit profile"}/>
                     <SettingCard iconName={"ios-unlock"} title={"Change password"}/>
                     <SettingCard iconName={"ios-globe"} title={"Language"}/>
-                    <SettingCard iconName={"md-log-out"} title={"Sign Out"} iconRightVisible={false}/>
+                    <SettingCard iconName={"md-log-out"} title={"Sign Out"} iconRightVisible={false} onPress={this.props.signOut}/>
                 </View>
                 <View style={{marginTop: 40,}}>
                     <SwitchSettingCard defaultValue={true} title={"Push notifications"}/>

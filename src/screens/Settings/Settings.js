@@ -9,9 +9,6 @@ class SettingsScreen extends React.Component {
         notificationsEnable: true,
     };
 
-    componentDidMount() {
-        console.log(this.props.navigation)
-    }
 
     render() {
         return (

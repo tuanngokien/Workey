@@ -1,14 +1,17 @@
-import { GoogleSignin } from 'react-native-google-signin';
 import firebase from 'react-native-firebase'
+import {signInUser} from "./utils";
+import {Alert} from "react-native";
 
-
-export async function emailLogin() {
-    try {
-        // login with email and password
-        const firebaseUserCredential = await firebase.auth().signInWithEmailAndPassword("tuanngokien@gmail.com", "123456");
-
-        console.warn(JSON.stringify(firebaseUserCredential.user.toJSON()));
-    } catch (e) {
-        console.error(e);
+export function emailLogin(username, password) {
+    return async (dispatch) => {
+        try {
+            // login with email and password
+            const firebaseUserCredential = await firebase.auth().signInWithEmailAndPassword(username, password);
+            console.log(firebaseUserCredential);
+            dispatch(signInUser(firebaseUserCredential.user));
+        } catch (e) {
+            console.log(e);
+            Alert.alert(e.toString())
+        }
     }
 }
