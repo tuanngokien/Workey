@@ -16,7 +16,6 @@ import BaseLandingContainer from "../../containers/BaseLanding/index"
 import firebase from "react-native-firebase"
 import {chatRef} from "../../../firestore"
 // import { FlatList } from "react-native-gesture-handler";
-import firebase from "react-native-firebase"
 
 let styles = StyleSheet.create({
     containerSearchBar: {
@@ -67,12 +66,12 @@ class InboxScreen extends React.Component {
         };
     }
     componentDidMount(){
-        firebase.firestore().collection('users').doc("yl9d4fqcHSAXwi0xBaZ").set({"ssd":"sasssssa"})
-                .then((data) => {
-                    console.log("done")
-                }).catch((error) => {
-                    console.log("error");
-            });
+        // firebase.firestore().collection('users').doc("yl9d4fqcHSAXwi0xBaZ").set({"ssd":"sasssssa"})
+        //         .then((data) => {
+        //             console.log("done")
+        //         }).catch((error) => {
+        //             console.log("error");
+        //     });
     }
     updateSearch = search => {
         this.setState({ search });
@@ -135,10 +134,10 @@ class InboxScreen extends React.Component {
         })
 
     };
-    async componentDidMount() {
+    componentDidMount() {
         
-        let cuser = await firebase.auth().currentUser;
-        firebase.firestore().collection("user").doc(cuser.uid).set(cuser).then(()=>{console.log("done")});
+        // let cuser = await firebase.auth().currentUser;
+        // firebase.firestore().collection("user").doc(cuser.uid).set(cuser).then(()=>{console.log("done")});
     };
 
     render() {
