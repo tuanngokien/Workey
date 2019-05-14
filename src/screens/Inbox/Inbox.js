@@ -15,6 +15,7 @@ import { Avatar } from "react-native-elements"
 import BaseLandingContainer from "../../containers/BaseLanding/index"
 import firebase from "react-native-firebase"
 import {chatRef} from "../../../firestore"
+// import console = require("console");
 
 
 let styles = StyleSheet.create({
@@ -128,11 +129,9 @@ class InboxScreen extends React.Component {
 
     };
     async componentDidMount() {
-        // this.getListChat(1);
-        // console.log(firebase.auth().currentUser);
-        // this.setState({user : firebase.auth().currentUser});
+        
         let cuser = await firebase.auth().currentUser;
-        firebase.firestore().collection("user").doc(cuser.uid).set(cuser)
+        firebase.firestore().collection("user").doc(cuser.uid).set(cuser).then(()=>{console.log("done")});
     };
 
     render() {
