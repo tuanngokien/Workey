@@ -15,14 +15,15 @@ import { Avatar } from "react-native-elements"
 import BaseLandingContainer from "../../containers/BaseLanding/index"
 import ChatConversations from "../../components/Chat/Chat"
 
-
+import db from "../../../config-firebase"
+// import console = require("console");
 let styles = StyleSheet.create({
     containerSearchBar: {
         backgroundColor: "transparent",
         margin: 0,
         padding: 0,
         paddingHorizontal: 5,
-        marginTop:10
+        marginTop: 10
 
     },
     containerNav: {
@@ -47,7 +48,7 @@ let styles = StyleSheet.create({
     flexRow: {
         flexDirection: "row",
     },
-    header:{
+    header: {
         marginBottom: 10
     }
 
@@ -55,18 +56,13 @@ let styles = StyleSheet.create({
 
 })
 class InboxScreen extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             search: "",
-            conversations: Conversations,
+            conversations:null,
         };
     }
-    // state={
-    //     search: "",
-    //     conversations: Conversations,
-    // }
-    
 
     updateSearch = search => {
         this.setState({ search });
@@ -84,55 +80,95 @@ class InboxScreen extends React.Component {
             )
         }
     }
-    tranferChat=(item)=>()=>{
-        this.props.navigation.navigate('Chat',{item});
+    tranferChat = (item) => () => {
+        this.props.navigation.navigate('Chat', { item });
         // Alert.alert("a");
 
     }
     renderUser = ({ item }) => {
-        return (
+        if (this.state.search == "") {
+            return (
+                <TouchableOpacity onPress={this.tranferChat(item.user)} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
+                    <View style={{ flexDirection: "row", }}>
+                        <View style={{ width: "15%" }}>
+                            <Avatar
+                                rounded
 
-            <TouchableOpacity onPress={this.tranferChat(item.user)} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
-                <View style={{ flexDirection: "row", }}>
-                    <View style={{ width: "15%" }}>
-                        <Avatar
-                            rounded
+                                source={
+                                    item.user.avatar
+                                }
+                                size={50}
+                                containerStyle={{
+                                    borderRadius: 100,
+                                    borderWidth: 1.5,
+                                    borderColor: "white"
+                                }}
+                            />
+                        </View>
+                        <View style={{ width: "65%" }}>
+                            <Text style={{ fontWeight: "400", fontSize: 16, color: "black" }}>{item.user.name}</Text>
+                            {/* <Text>{item.messages[item.messages.length -1].text}</Text> */}
+                            {this.handleMessage(item.messages[item.messages.length - 1].text)}
+                        </View>
+                        <View style={{ width: "20%", right: 0, position: "absolute" }}>
+                            <Text>{item.user.time}</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            )
+        }
+        else {
+            if (item.user.name.search(this.state.search)) {
+                <TouchableOpacity onPress={this.tranferChat(item.user)} style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
+                    <View style={{ flexDirection: "row", }}>
+                        <View style={{ width: "15%" }}>
+                            <Avatar
+                                rounded
 
-                            // source={{
-                            //     uri: item.user.avatar
-                            // }}
-                            source={
-                            item.user.avatar
-                            }
-                            // source= "../../assets/images/avatar/avatar2.jpeg"
-                            size={50}
-                            containerStyle={{
-                                borderRadius: 100,
-                                borderWidth: 1.5,
-                                borderColor: "white"
-                            }}
-                        />
+                                source={
+                                    item.user.avatar
+                                }
+                                size={50}
+                                containerStyle={{
+                                    borderRadius: 100,
+                                    borderWidth: 1.5,
+                                    borderColor: "white"
+                                }}
+                            />
+                        </View>
+                        <View style={{ width: "65%" }}>
+                            <Text style={{ fontWeight: "400", fontSize: 16, color: "black" }}>{item.user.name}</Text>
+                            {/* <Text>{item.messages[item.messages.length -1].text}</Text> */}
+                            {this.handleMessage(item.messages[item.messages.length - 1].text)}
+                        </View>
+                        <View style={{ width: "20%", right: 0, position: "absolute" }}>
+                            <Text>{item.user.time}</Text>
+                        </View>
                     </View>
-                    <View style={{ width: "65%" }}>
-                        <Text style={{ fontWeight: "400", fontSize: 16, color: "black" }}>{item.user.name}</Text>
-                        {/* <Text>{item.messages[item.messages.length -1].text}</Text> */}
-                        {this.handleMessage(item.messages[item.messages.length - 1].text)}
-                    </View>
-                    <View style={{ width: "20%", right: 0, position: "absolute" }}>
-                        <Text>{item.user.time}</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
-        )
-    }
+                </TouchableOpacity>
+            }
+        }
+    };
+    componentDidMount(){
+        let chatRef = db.collection("chat");
+        userRef.get().then((res) => { 
+        console.log(res);
+            this.setState({
+            conversations : Conversations
+        })
+    })
+
+
+    };
 
     render() {
-        
+        console.log(db);
+
         return (
             <ScrollView style={styles.screen}>
-            <BaseLandingContainer style={styles.header}>
-                
-                  
+                <BaseLandingContainer style={styles.header}>
+
+
                     <View>
                         <SearchBar placeholder="Type here..."
                             onChangeText={this.updateSearch}
@@ -149,20 +185,20 @@ class InboxScreen extends React.Component {
                             }}
                         />
                     </View>
-                    </BaseLandingContainer>
-                    <ScrollView style={styles.containerList}>
-                        <FlatList
-                            data={this.state.conversations}
-                            renderItem={this.renderUser}
-                            keyExtractor={(item, index) => item.user.id.toString()}
-                            
-                        />
+                </BaseLandingContainer>
+                <ScrollView style={styles.containerList}>
+                    <FlatList
+                        data={this.state.conversations}
+                        renderItem={this.renderUser}
+                        keyExtractor={(item, index) => item.user.id.toString()}
+
+                    />
 
 
-                    </ScrollView>
-                    
                 </ScrollView>
-            
+
+            </ScrollView>
+
         );
     }
 }

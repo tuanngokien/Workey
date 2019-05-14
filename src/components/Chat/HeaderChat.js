@@ -5,7 +5,6 @@ import TopNavigator from "../TopNavigator";
 import goBack from "../../assets/images/icons/goback.png"
 import bgImage from "../../assets/images/background/sky.png"
 import { TouchableHighlight } from "react-native-gesture-handler";
-// import console = require("console");
 let styles = StyleSheet.create({
   containerHeader :{
     // backgroundColor:"red",
