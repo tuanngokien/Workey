@@ -18,7 +18,7 @@ const RootStack = createStackNavigator(
         [SIGN_UP_SCREEN]: SignUpScreen,
     },
     {
-        initialRouteName: SIGN_IN_SCREEN,
+        initialRouteName: INTRO_SCREEN,
         defaultNavigationOptions: {
             header: null
         }

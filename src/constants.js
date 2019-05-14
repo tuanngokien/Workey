@@ -12,7 +12,7 @@ export const TABBAR_ICONS = {
     [TABS.Home]: "home",
     [TABS.Inbox]: "inbox",
     [TABS.Search]: "search",
-    [TABS.Settings]: "settings",
+    [TABS.Settings]: "user",
     [TABS.Notification]: "bell",
 };
 

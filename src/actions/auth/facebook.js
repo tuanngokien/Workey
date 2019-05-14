@@ -25,13 +25,21 @@ export function facebookLogin() {
 
             // create a new firebase credential with the token
             const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-
             // login with credential
             const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
-            dispatch(signInUser(firebaseUserCredential.user));
+            const user = firebaseUserCredential.user;
+            let {displayName, email, photoURL} = user;
+            firebase.firestore().collection('users').doc(user.uid).set({displayName, email, photoURL})
+                .then((data) => {
+                    console.log('data ' , data)
+                }).catch((error) => {
+                    console.log(error);
+            });
+
+            dispatch(signInUser(user));
         } catch (e) {
-            console.error(e);
-            Alert.alert(e);
+            console.log(e);
+            Alert.alert(e.toString());
         }
     }
 }
