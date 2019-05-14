@@ -29,7 +29,7 @@ export function facebookLogin() {
             const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
             const user = firebaseUserCredential.user;
             let {displayName, email, photoURL} = user;
-            firebase.firestore().collection('users').doc(user.uid).set({displayName, email, photoURL})
+            firebase.firestore().collection('user').doc(user.uid).set({displayName, email, photoURL})
                 .then((data) => {
                     console.log('data ' , data)
                 }).catch((error) => {

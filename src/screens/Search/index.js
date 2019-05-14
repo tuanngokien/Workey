@@ -4,8 +4,6 @@ import JobDetailScreen from "../JobDetail";
 import {createAppContainer, createStackNavigator} from "react-navigation";
 import {SEARCH_FILTER_SCREEN, SEARCH_RESULT_SCREEN, JOB_DETAIL_SCREEN} from "./Tabs";
 
-
-
 const RootStack = createStackNavigator(
     {
         [SEARCH_FILTER_SCREEN]: SearchFilterScreen,
