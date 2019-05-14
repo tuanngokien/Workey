@@ -60,7 +60,7 @@ class AvatarUser extends React.Component{
                             borderWidth: 4,
                             padding:4,
                             backgroundColor:"white",
-                            borderColor: "#66FFCC"
+                            borderColor: "#003366"
                         }}
                     />
             </View>

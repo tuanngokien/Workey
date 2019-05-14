@@ -59,13 +59,13 @@ let styles = StyleSheet.create({
     switch: {
         marginVertical: 14,
     },
-    imageBackground: {
+    imageBackground: {        
         width: '100%',
         height: 190,
         resizeMode: "cover",
         backgroundColor:"transparent"
     },
-    container:{
+    containerSetting:{
         marginLeft: "3%"
     }
 
@@ -108,7 +108,7 @@ class SettingsScreen extends React.Component {
                 <View>                
                     {/* <Icon name="pencil" type="font-awesome" color="black" size ={35} iconStyle={{paddingBottom:5}} /> */}
                 </View>
-                <View style={styles.container}>
+                <View style={styles.containerSetting}>
                     <SettingDivider/>
                     <TouchableOpacity style={styles.rowButton}>
                         <Text style={styles.textRow}>Preferences</Text>
@@ -118,21 +118,21 @@ class SettingsScreen extends React.Component {
                     </TouchableOpacity>
                     
                 </View>
-                <View style={styles.container}>
+                <View style={styles.containerSetting}>
                     <SettingDivider/>
                     <TouchableOpacity style={styles.rowButton}>
                         <Text style={styles.textRow}>Account</Text>
                         <Icon name="cog" type="font-awesome" color="black" size ={25} containerStyle={{marginLeft:"65%"}}  />
                     </TouchableOpacity>                    
                 </View>
-                <View style={styles.container}>
+                <View style={styles.containerSetting}>
                     <SettingDivider/>
                     <TouchableOpacity style={styles.rowButton}>
                         <Text style={styles.textRow}>Help Center</Text>
                         <Icon name="question" type="font-awesome" color="black" size ={25} containerStyle={{marginLeft:"55%"}}  />
                     </TouchableOpacity>
                 </View>
-                <View style={styles.container}>
+                <View style={styles.containerSetting}>
                     <SettingDivider/>
                     <TouchableOpacity style={styles.rowButton}>
                         <Text style={styles.textRow}>Logout</Text>
