@@ -19,7 +19,7 @@ let styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 17,
         fontSize:20,
-        fontFamily: "FontAwesome",
+        fontFamily: "Nunito-Bold",
         color : "black",
         
     },
@@ -30,7 +30,7 @@ let styles = StyleSheet.create({
         marginTop:85,
     },
     email :{
-        fontSize :10,
+        fontSize :13,
         fontFamily:"FontAwesome",
         color :"black",
         alignItems :'center'
@@ -57,8 +57,10 @@ class AvatarUser extends React.Component{
                         size={160}
                         containerStyle={{
                             borderRadius: 100,
-                            borderWidth: 1.5,
-                            borderColor: "white"
+                            borderWidth: 4,
+                            padding:4,
+                            backgroundColor:"white",
+                            borderColor: "#66FFCC"
                         }}
                     />
             </View>
