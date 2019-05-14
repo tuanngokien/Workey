@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
     },
     subTitle: {
         fontFamily: "Nunito-Regular",
-        fontSize: 14,
+        fontSize: 13,
     },
     actor: {
         fontFamily: "Nunito-SemiBold",
         fontWeight:'normal',
-        fontSize: 14.5,
+        fontSize: 13.5,
         color: "#008ad8"
     },
     avatar: {

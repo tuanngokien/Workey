@@ -1,7 +1,7 @@
 import {facebookLogin} from "../../actions/auth/facebook";
 import {googleLogin} from "../../actions/auth/google";
 import {emailLogin} from "../../actions/auth/email";
-import {isAuthenticated} from "../../actions/auth/utils";
+import {isAuthenticated, signOut} from "../../actions/auth/utils";
 
 
-export {facebookLogin, googleLogin, emailLogin, isAuthenticated}
+export {facebookLogin, googleLogin, emailLogin, isAuthenticated, signOut}
