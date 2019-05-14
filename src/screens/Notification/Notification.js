@@ -14,6 +14,7 @@ import Notification from "../Notification/data"
 import {ColoredDivider, Divider,NotiDivider} from "../../components/Divider";
 import { Avatar } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
+import sendNoti from "../../components/PushNotification/sendNoti";
 let styles=StyleSheet.create({
     
     notiReaded:{
@@ -57,14 +58,13 @@ class NotificationScreen extends React.Component {
         }
     }
     renderNoti = ({ item }) => {
-        return(
-             // <TouchableOpacity style={{ backgroundColor:"white",marginVertical:5,heigh:80}}>
-             <TouchableOpacity style={[item.user.readed? styles.notiReaded :styles.notiNotReaded]}> 
+        return(             
+             <TouchableOpacity style={[item.user.readed? styles.notiReaded :styles.notiNotReaded]} > 
                 <NotiDivider/>
                 <TouchableOpacity>                
                 <View style={{flexDirection:"row", paddingTop:15}}>
 
-                    <View style={{width: "20%"}}>
+                    <View style={{width: "20%"}} >
                         <Avatar
                             rounded
                             source={{
@@ -103,8 +103,7 @@ class NotificationScreen extends React.Component {
         return (
             <ScrollView style={{backgroundColor:"transparent"}}>
                 <View >
-                <TopNoti title={"Notification"} />
-                {/* <SimpleTopNavigator title={"Notification1"} /> */}
+                <TopNoti title={"Notification"} />                
                 </View>
                 <View>
                     <FlatList

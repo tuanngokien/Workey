@@ -16,6 +16,8 @@ import OneSignal from 'react-native-onesignal';
 import {YellowBox} from 'react-native';
 
 
+
+
 YellowBox.ignoreWarnings(['Remote debugger']);
 
 const TabNavigator = createBottomTabNavigator({
@@ -82,12 +84,26 @@ const AppContainer = createAppContainer(TabNavigator);
 export default class App extends React.Component {
     constructor(properties) {
         super(properties);
-        OneSignal.init("3605c104-24a6-4fe5-ab81-a1ec69e66775");
-    
+        
+       
         // OneSignal.addEventListener('received', this.onReceived);
         // OneSignal.addEventListener('opened', this.onOpened);
         // OneSignal.addEventListener('ids', this.onIds);
-      }
+    }
+    componentWillMount() {
+        OneSignal.init("3605c104-24a6-4fe5-ab81-a1ec69e66775");
+        OneSignal.configure();
+        OneSignal.addEventListener('ids', this.onIds);
+    }
+    
+    componentWillUnmount() {
+        OneSignal.removeEventListener('ids', this.onIds);
+    }
+    
+    onIds(device) {
+        console.log('Device info: ', device.userId);
+    }
+    
     render() {
         return <AppContainer />;
     }
