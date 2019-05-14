@@ -16,6 +16,8 @@ import OneSignal from 'react-native-onesignal';
 import {YellowBox} from 'react-native';
 import NumberNotification from "./src/components/NumberNotification/NumberNotification"
 import SignInScreen from "./src/screens/SignIn";
+import { connect } from 'react-redux';
+import {isAuthenticated} from "./src/actions/auth";
 
 
 YellowBox.ignoreWarnings(['Remote debugger']);
@@ -82,14 +84,15 @@ const TabNavigator = createBottomTabNavigator({
 
 const MainContainer = createAppContainer(TabNavigator);
 var SQLite = require('react-native-sqlite-storage');
-export const db = SQLite.openDatabase({name:"user",createFromLocation:"~workey.db"})
-export default class App extends React.Component {
-    state = {
-        signedIn: true
-    };
+export const db = SQLite.openDatabase({name:"user",createFromLocation:"~workey.db"});
+
+class App extends React.Component {
+    componentDidMount(){
+        this.props.isAuthenticated();
+    }
 
     render() {
-        let {signedIn} = this.state;
+        let {signedIn} = this.props;
         if(signedIn){
             return <MainContainer/>;
         }else{
@@ -97,3 +100,12 @@ export default class App extends React.Component {
         }
     }
 }
+
+export default connect(
+    (state) => {
+        return {
+            signedIn: state.auth.signedIn,
+        }
+    },
+    {isAuthenticated},
+)(App)
