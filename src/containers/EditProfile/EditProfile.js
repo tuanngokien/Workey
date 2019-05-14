@@ -5,8 +5,6 @@ import Input from '../../components/Input';
 import RoleContainer from "../Profile/Role";
 import SkillContainer from "../Profile/Skill";
 
-const BORDER_COLOR = "rgb(218, 220, 224)";
-const BORDER_WIDTH = 0;
 
 const styles = StyleSheet.create({
     rowContainer: {

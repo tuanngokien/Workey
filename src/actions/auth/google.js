@@ -1,6 +1,7 @@
 import { GoogleSignin } from 'react-native-google-signin';
 import firebase from 'react-native-firebase'
 import {signInUser} from "./utils";
+import {Alert} from "react-native";
 
 
 export function googleLogin() {
@@ -19,7 +20,8 @@ export function googleLogin() {
             const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
             dispatch(signInUser(firebaseUserCredential.user));
         } catch (e) {
-            console.error(e);
+            // console.error(e);
+            Alert.alert(e.toString())
         }
     }
 }
