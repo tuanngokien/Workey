@@ -12,13 +12,14 @@ const styles = StyleSheet.create({
 
 export default class SettingsContainer extends React.Component {
     render() {
+        let {signOut, onPressEdit, onPressChangePassword} = this.props;
         return (
             <ScrollView scrollViewStyle={styles.scrollView}>
                 <View>
-                    <SettingCard iconName={"md-list"} title={"Edit profile"}/>
-                    <SettingCard iconName={"ios-unlock"} title={"Change password"}/>
-                    <SettingCard iconName={"ios-globe"} title={"Language"}/>
-                    <SettingCard iconName={"md-log-out"} title={"Sign Out"} iconRightVisible={false} onPress={this.props.signOut}/>
+                    <SettingCard iconName={"md-list"} title={"Edit profile"} onPress={onPressEdit}/>
+                    <SettingCard iconName={"ios-unlock"} title={"Change password"} onPress={onPressChangePassword}/>
+                    {/*<SettingCard iconName={"ios-globe"} title={"Language"}/>*/}
+                    <SettingCard iconName={"md-log-out"} title={"Sign Out"} iconRightVisible={false} onPress={signOut}/>
                 </View>
                 <View style={{marginTop: 40,}}>
                     <SwitchSettingCard defaultValue={true} title={"Push notifications"}/>
