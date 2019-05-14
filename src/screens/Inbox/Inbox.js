@@ -60,6 +60,7 @@ class InboxScreen extends React.Component {
         this.state = {
             search: "",
             conversations: null,
+            
         };
     }
 
