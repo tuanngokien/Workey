@@ -4,7 +4,7 @@ import {View, StyleSheet} from "react-native";
 import {Navigator} from "../../components/TopNavigator/SimpleTopNavigator";
 import ApplyButton from "../../components/ApplyButton";
 import {DEVICE_WIDTH} from "../../constants";
-
+import {SHOW_FULL_MAP} from "./Tabs";
 const styles = StyleSheet.create({
     navContainer: {
         position: "absolute",
@@ -27,14 +27,16 @@ class JobDetail extends React.Component {
     onBack = () => {
         this.props.navigation.goBack()
     };
-
+    renderFull = () => {
+        this.props.navigation.navigate(SHOW_FULL_MAP)
+    };
     render() {
         return (
             <View>
                 <View style={styles.navContainer}>
                     <Navigator title={""} rightIconName={"md-share"} onBack={this.onBack}/>
                 </View>
-                <JobDetailContainer/>
+                <JobDetailContainer renderFull={this.renderFull}/>
                 <View style={styles.applyButtonContainer}>
                     <ApplyButton/>
                 </View>

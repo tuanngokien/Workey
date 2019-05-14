@@ -9,6 +9,7 @@ import ScrollView from "../../components/ScrollView";
 import MapView from "../../components/MapView";
 import Data from "./data";
 import {DEVICE_HEIGHT} from "../../constants";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 const CONTENT_OVERLAP_TOP = -40;
@@ -83,6 +84,9 @@ const TinyCard = ({iconName, number, title, style}) => {
 };
 
 export default class JobDetailContainer extends React.Component {
+    renderMap = () =>{
+        this.props.navigation.navigate(EDIT_PROFILE_SCREEN)
+    };
     render() {
         const {cover, logo, title, employer, createdAt, viewCount, rating, description, responsibilities, qualifications, address} = Data;
         return (
@@ -118,8 +122,13 @@ export default class JobDetailContainer extends React.Component {
                         <CriterionList data={qualifications}/>
                     </View>
                     <View>
-                        <Text style={[styles.title, {fontSize: 18, paddingBottom: "0.08%"}]}>Location</Text>
-                        <MapView address={address}/>
+                        <View style={{flexDirection:"row"}}>
+                            <Text style={[styles.title, {fontSize: 18, paddingBottom: "0.08%"}]} >Location</Text>
+                            <Icon name={"arrowsalt"} onPress={this.props.renderFull}/>
+                        </View>
+                        <TouchableWithoutFeedback onPress={this.props.renderFull}>
+                            <MapView address={address}  />   
+                        </TouchableWithoutFeedback>
                     </View>
                 </View>
             </ScrollView>
