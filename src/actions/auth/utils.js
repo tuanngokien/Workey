@@ -3,12 +3,11 @@ import {SIGN_IN, SIGN_OUT, UNKNOWN} from "../type";
 
 
 export const signInUser = (user) => {
-    console.log(user);
     if (user) {
-        let {displayName, email, photoURL} = user;
+        let {uid, displayName, email, photoURL} = user;
         return {
             type: SIGN_IN,
-            payload: {displayName, email, photoURL},
+            payload: {uid, displayName, email, photoURL},
         }
     } else {
         return {type: UNKNOWN}
@@ -17,9 +16,9 @@ export const signInUser = (user) => {
 
 export const signUpUser = (user) => {
     if(user) {
-        let {displayName, email, photoURL} = user;
+        let {uid, displayName, email, photoURL} = user;
         console.log("Signup", displayName, email);
-        firebase.firestore().collection('user').doc(user.uid).set({displayName, email, photoURL})
+        firebase.firestore().collection('user').doc(uid).set({uid, displayName, email, photoURL})
             .then((data) => {
                 console.log('data ' , data)
             }).catch((error) => {

@@ -24,7 +24,7 @@ const RootStack = createStackNavigator(
         [SIGN_UP_SCREEN]: ReduxSignUpScreen,
     },
     {
-        initialRouteName: SIGN_UP_SCREEN,
+        initialRouteName: INTRO_SCREEN,
         defaultNavigationOptions: {
             header: null
         }

@@ -45,13 +45,14 @@ const styles = StyleSheet.create({
 
 export default class NewsTitleContainer extends React.Component {
     render() {
+        const {title, createdAt, viewCount} = this.props;
         return (
             <LinearGradient colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.5)","rgba(0,0,0,0.6)", "rgba(0,0,0,0.6)", "rgba(0,0,0,0.8)"]} style={styles.container}>
-                <Text style={styles.title}>You Need to Start Hiring, You Also Need to Know What That Means</Text>
+                <Text style={styles.title}>{title}</Text>
                 <View style={styles.rowContainer}>
-                    <Text style={styles.subTitle}>16 May 2019</Text>
+                    <Text style={styles.subTitle}>{createdAt}</Text>
                     <Icon name={"circle-small"} style={[styles.subTitle, {fontSize: 30}]}/>
-                    <Text style={styles.subTitle}>162 views</Text>
+                    <Text style={styles.subTitle}>{viewCount} views</Text>
                 </View>
                 <View style={styles.bookmarkButtonContainer}>
                     <BookmarkButton is_bookmarked={true}/>
