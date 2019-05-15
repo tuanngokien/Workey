@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, Image} from "react-native";
+import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from "react-native";
 import GoogleLogo from "../../assets/images/logo/google.png";
 import Icon from "react-native-vector-icons/Feather";
 
@@ -60,32 +60,34 @@ const CategoryBadge = ({category}) => {
 
 class NewsCard extends React.Component {
     render() {
-        const {ordinalNumber, title, createdAt, image, category} = this.props;
+        const {ordinalNumber, title, createdAt, image, category, onPress} = this.props;
         return (
-            <View style={styles.card}>
-                <Text style={styles.ordinalNumber}>{ordinalNumber}.</Text>
-                <View style={{flex: 0.75, flexDirection: "column", justifyContent: "space-between"}}>
-                    <View style={styles.titleContainer}>
-                        <Text style={styles.title}>
-                            {title}
-                        </Text>
-                    </View>
-                    <View style={{flexDirection: "row", justifyContent: "space-between"}}>
-                        <CategoryBadge category={category}/>
-                        <View style={[styles.titleContainer, {marginRight: 8}]}>
-                            <Icon name={"clock"} style={{marginRight: 2}}/>
-                            <Text style={styles.subTitle}>
-                                {createdAt}
+            <TouchableWithoutFeedback onPress={() => onPress(ordinalNumber)}>
+                <View style={styles.card}>
+                    <Text style={styles.ordinalNumber}>{ordinalNumber}.</Text>
+                    <View style={{flex: 0.75, flexDirection: "column", justifyContent: "space-between"}}>
+                        <View style={styles.titleContainer}>
+                            <Text style={styles.title}>
+                                {title}
                             </Text>
                         </View>
+                        <View style={{flexDirection: "row", justifyContent: "space-between"}}>
+                            <CategoryBadge category={category}/>
+                            <View style={[styles.titleContainer, {marginRight: 8}]}>
+                                <Icon name={"clock"} style={{marginRight: 2}}/>
+                                <Text style={styles.subTitle}>
+                                    {createdAt}
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={{flex: 0.2, justifyContent: "flex-end", alignItems: "center"}}>
+                        <Image
+                            source={image}
+                            style={{width: 70, height: 70, borderRadius: 10}}/>
                     </View>
                 </View>
-                <View style={{flex: 0.2, justifyContent: "flex-end", alignItems: "center"}}>
-                    <Image
-                        source={image}
-                        style={{width: 70, height: 70, borderRadius: 10}}/>
-                </View>
-            </View>
+            </TouchableWithoutFeedback>
         );
     }
 }

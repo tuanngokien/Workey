@@ -1,12 +1,18 @@
 import HomeScreen from "./Home";
+import NewsDetailScreen from "../NewsDetail";
 import {createStackNavigator, createAppContainer} from "react-navigation";
+import {HOME_SCREEN, NEWS_DETAIL_SCREEN} from "./Tabs";
 
 const RootStack = createStackNavigator(
     {
-        Home: HomeScreen,
+        [HOME_SCREEN]: HomeScreen,
+        [NEWS_DETAIL_SCREEN]: NewsDetailScreen,
     },
     {
-        initialRouteName: 'Home',
+        initialRouteName: HOME_SCREEN,
+        defaultNavigationOptions: {
+            header: null
+        }
     }
 );
 

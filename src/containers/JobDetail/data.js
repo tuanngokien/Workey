@@ -20,6 +20,6 @@ export default Data = {
     qualifications: [
         "Graduate in any discipline can be substitution for expericence Diploma in Graphic",
         "Design, Graphic Arts Institute, BFA, MFA, etc. prefered",
-        "Graphic/visual design experience a plus",
+        "Visual design experience a plus",
     ]
 };

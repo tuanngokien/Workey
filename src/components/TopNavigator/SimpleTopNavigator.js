@@ -6,6 +6,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 const styles = StyleSheet.create({
     overlayContainer: {
         flex: 1,
+        justifyContent: "space-between",
     },
     topNavigatorContainer: {
         paddingTop: 25,
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export const Navigator = ({title, leftIconName, rightIconName, overlayOpacity, iconVisible, onBack, onRightPress}) => {
+export const Navigator = ({title, leftIconName, rightIconName, overlayOpacity, iconVisible, onBack, onRightPress, children}) => {
     return (
         <View style={[styles.overlayContainer, {backgroundColor: `rgba(0,0,0,${overlayOpacity || 0})`}]}>
             <StatusBar translucent backgroundColor={"transparent"}/>
@@ -49,6 +50,7 @@ export const Navigator = ({title, leftIconName, rightIconName, overlayOpacity, i
                     </TouchableWithoutFeedback>
                 </View>
             </View>}
+            {children}
         </View>)
 };
 

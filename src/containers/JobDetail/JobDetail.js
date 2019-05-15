@@ -90,10 +90,6 @@ const TinyCard = ({iconName, number, title, style}) => {
 };
 
 export default class JobDetailContainer extends React.Component {
-    renderMap = () => {
-        this.props.navigation.navigate(EDIT_PROFILE_SCREEN)
-    };
-
     render() {
         const {cover, logo, title, employer, createdAt, viewCount, rating, description, responsibilities, qualifications, address} = Data;
         return (
@@ -132,12 +128,9 @@ export default class JobDetailContainer extends React.Component {
                     </View>
                     <View>
                         <View style={{flexDirection: "row"}}>
-                            <TouchableWithoutFeedback onPress={this.props.renderFull}>
-                                <Text style={[styles.title, {fontSize: 18, paddingBottom: "0.08%"}]}>Location</Text>
-                            </TouchableWithoutFeedback>
-
+                            <Text style={[styles.title, {fontSize: 18, paddingBottom: "0.08%"}]}>Location</Text>
                         </View>
-                        <MapView address={address}/>
+                        <MapView address={address} onPress={this.props.renderFull}/>
                     </View>
                 </View>
             </ScrollView>
