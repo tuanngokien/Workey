@@ -7,8 +7,8 @@ import NewsContainer from "../../containers/News";
 import {NEWS_DETAIL_SCREEN} from "./Tabs";
 
 class HomeScreen extends React.Component {
-    onPressNews = (newsId) => {
-        this.props.navigation.navigate(NEWS_DETAIL_SCREEN, {newsId});
+    onPressNews = (id) => {
+        this.props.navigation.navigate(NEWS_DETAIL_SCREEN, {id});
     };
 
     render() {

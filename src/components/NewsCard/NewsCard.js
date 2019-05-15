@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const CategoryBadge = ({category}) => {
+export const CategoryBadge = ({category}) => {
     let borderColor = "#716aca", categoryTitle = "Recruiting";
     if (category === 1) {
         borderColor = "#ee8028";
@@ -60,9 +60,9 @@ const CategoryBadge = ({category}) => {
 
 class NewsCard extends React.Component {
     render() {
-        const {ordinalNumber, title, createdAt, image, category, onPress} = this.props;
+        const {ordinalNumber, id, title, createdAt, thumbnail, category, onPress} = this.props;
         return (
-            <TouchableWithoutFeedback onPress={() => onPress(ordinalNumber)}>
+            <TouchableWithoutFeedback onPress={() => onPress(id)}>
                 <View style={styles.card}>
                     <Text style={styles.ordinalNumber}>{ordinalNumber}.</Text>
                     <View style={{flex: 0.75, flexDirection: "column", justifyContent: "space-between"}}>
@@ -83,7 +83,7 @@ class NewsCard extends React.Component {
                     </View>
                     <View style={{flex: 0.2, justifyContent: "flex-end", alignItems: "center"}}>
                         <Image
-                            source={image}
+                            source={thumbnail}
                             style={{width: 70, height: 70, borderRadius: 10}}/>
                     </View>
                 </View>

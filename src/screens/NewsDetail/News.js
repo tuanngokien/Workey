@@ -1,13 +1,14 @@
 import React from "react";
 import {View, Text, Share} from "react-native";
 import {SimpleTopNavigator} from "../../components/TopNavigator";
-import News1Banner from "../../assets/images/news/news1_lg.jpg";
 import {NewsTitleContainer, NewsBodyContainer} from "../../containers/NewsDetail";
 import {onShare} from "../../actions/share";
+import {Data} from "../../containers/News/data";
 
 export default class NewsDetailScreen extends React.Component {
     onShare = () => {
-        onShare("uetworkey.tk/news/928")
+        const id = this.props.navigation.getParam("id");
+        onShare(`http://uetworkey.tk/news/${id}`)
     };
 
     onBack = () => {
@@ -15,13 +16,15 @@ export default class NewsDetailScreen extends React.Component {
     };
 
     render() {
+        const id = this.props.navigation.getParam("id");
+        const {title, createdAt, viewCount, content, category, image} = Data.find((e) => e.id === id);
         return (
             <View>
-                <SimpleTopNavigator title={""} rightIconName="md-share" onBack={this.onBack} coverSource={News1Banner}
-                                    coverStyle={{height: 200}} overlayOpacity={0.3} onRightPress={this.onShare} onBack={this.onBack}>
-                    <NewsTitleContainer/>
+                <SimpleTopNavigator title={""} rightIconName="md-share" onBack={this.onBack} coverSource={image}
+                                    coverStyle={{height: 200}} overlayOpacity={0.3} onRightPress={this.onShare}>
+                    <NewsTitleContainer title={title} createdAt={createdAt} viewCount={viewCount}/>
                 </SimpleTopNavigator>
-                <NewsBodyContainer/>
+                <NewsBodyContainer category={category} content={content}/>
             </View>
         )
     }

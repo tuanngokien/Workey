@@ -3,6 +3,8 @@ import NotificationCard from "../../components/NotificationCard";
 import {View, Text, StyleSheet} from "react-native";
 import ScrollView from "../../components/ScrollView";
 import {TodayData, YesterdayData} from "./data";
+import firebase from "react-native-firebase";
+import {splitNotifications} from "../../utils";
 
 const styles = StyleSheet.create({
     scrollView: {
@@ -22,17 +24,50 @@ const styles = StyleSheet.create({
     }
 });
 
-export default class NotificationContainer extends React.Component{
-    render(){
+const firestore = firebase.firestore();
+
+
+export default class NotificationContainer extends React.Component {
+    componentDidMount() {
+        const {uid} = this.props.user;
+        this.listenNewNotifications(uid);
+    }
+
+    parseNotification = (snapshot) => {
+        const {notifications, pushNewNotification} = this.props;
+        const {from, createdAt, message} = snapshot.data();
+        const id = snapshot.id;
+        firestore.collection("user").doc(from).get().then(fromUserData => {
+            const {displayName, photoURL} = fromUserData.data();
+            if(notifications.findIndex(n => id === n.id) === -1){
+                pushNewNotification({id, sender: {displayName, photoURL}, createdAt, message});
+            }
+        })
+    };
+
+    listenNewNotifications = async (uid) => {
+        firestore.collection(`user/${uid}/notifications`).orderBy("createdAt", "desc").onSnapshot((snapshot) => {
+            snapshot.docs.forEach((doc) => {
+                this.parseNotification(doc);
+            });
+        })
+    };
+
+    render() {
+        const {notifications} = this.props;
+        notifications.sort((a, b) => {
+            return b.createdAt - a.createdAt;
+        });
+        const [todayNotifications, yesterdayNotifications] = splitNotifications(notifications);
         return (
             <ScrollView scrollViewStyle={styles.scrollView} style={{marginBottom: 70}}>
                 <View style={styles.container}>
                     <Text style={styles.title}>Today</Text>
-                    {TodayData.map((data, index) => <NotificationCard {...data} key={index}/>)}
+                    {todayNotifications.map((notification) => <NotificationCard {...notification} key={notification.id}/>)}
                 </View>
                 <View style={styles.container}>
                     <Text style={styles.title}>Yesterday</Text>
-                    {YesterdayData.map((data, index) => <NotificationCard {...data} key={index}/>)}
+                    {yesterdayNotifications.map((notification) => <NotificationCard {...notification} key={notification.id}/>)}
                 </View>
             </ScrollView>
         )
