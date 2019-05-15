@@ -24,13 +24,14 @@ const styles = StyleSheet.create({
 
 export default class NewsContainer extends React.Component {
     render() {
+        const {onPressNews} = this.props;
         return (
             <View>
                 <Text style={styles.titleContainer}>News</Text>
                 <View style={styles.newsContainer}>
                     {Data.map((item, index) => (
                         <View key={index}>
-                            <NewsCard ordinalNumber={index + 1} {...item}/>
+                            <NewsCard ordinalNumber={index + 1} {...item} onPress={onPressNews}/>
                             <View style={(index != Data.length - 1) ? {
                                 margin: "5%",
                                 borderWidth: 0.5,

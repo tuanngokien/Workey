@@ -43,6 +43,12 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         borderBottomLeftRadius: 20,
         borderTopLeftRadius: 20,
+        shadowColor: "rgba(0, 0, 0, 1)",
+        shadowOffset: {
+            width: -3,
+            height: 5,
+        },
+        elevation: 0.4,
     },
     icon: {
         fontSize: 30,
@@ -85,8 +91,7 @@ export default class SearchFilterContainer extends React.Component {
                 <View style={[styles.container, {
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    paddingHorizontal: "12%"
-                }]}>
+                    paddingHorizontal: "12%"}]}>
                     <Slider slideColor={"rgba(114, 3, 193, .4)"} backgroundTextColor={"rgba(113, 4, 194, .6)"}
                             label={"K $"} chartTitle={"Salary Expectations"} maxValue={50} defaultValue={32.5}/>
                     <Slider slideColor={"rgba(193, 3, 88, .4)"} backgroundTextColor={"rgba(193, 3, 88, .6)"}

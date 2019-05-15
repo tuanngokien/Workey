@@ -25,11 +25,10 @@ class JobDetail extends React.Component {
     };
 
     onBack = () => {
-        console.log("OK");
         this.props.navigation.goBack()
     };
-    renderFull = () => {
-        this.props.navigation.navigate(SHOW_FULL_MAP)
+    renderFull = (props) => {
+        this.props.navigation.navigate(SHOW_FULL_MAP, props)
     };
 
     render() {

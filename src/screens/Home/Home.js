@@ -4,11 +4,11 @@ import {Divider} from "../../components/Divider";
 import HomeLandingContainer from "../../containers/HomeLanding";
 import TopEmployersContainer from "../../containers/TopEmployers";
 import NewsContainer from "../../containers/News";
-
+import {NEWS_DETAIL_SCREEN} from "./Tabs";
 
 class HomeScreen extends React.Component {
-    static navigationOptions = {
-        header: null,
+    onPressNews = (newsId) => {
+        this.props.navigation.navigate(NEWS_DETAIL_SCREEN, {newsId});
     };
 
     render() {
@@ -17,7 +17,7 @@ class HomeScreen extends React.Component {
                 <HomeLandingContainer/>
                 <Divider/>
                 <TopEmployersContainer/>
-                <NewsContainer/>
+                <NewsContainer onPressNews={this.onPressNews}/>
             </ScrollView>
         )
     }

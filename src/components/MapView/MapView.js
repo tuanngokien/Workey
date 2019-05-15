@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, PermissionsAndroid} from "react-native";
+import {View, Text, StyleSheet, PermissionsAndroid, TouchableWithoutFeedback} from "react-native";
 import MapView, {Marker} from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import {DEVICE_HEIGHT, DEVICE_WIDTH, GOOGLE_MAPS_API_KEY} from "../../constants";
@@ -62,7 +62,6 @@ export default class MyMapView extends React.Component {
         navigator.geolocation.watchPosition(
             (position) => {
                 const currentLocationCoordinate = position.coords;
-                this.setState({currentLocationCoordinate});
                 const {companyLocationCoordinate, initialRegion} = this.state;
                 const centerCoordinate = {
                     ...initialRegion,
@@ -71,6 +70,7 @@ export default class MyMapView extends React.Component {
                 };
                 console.log(centerCoordinate);
                 this.map.animateToRegion(centerCoordinate);
+                this.setState({currentLocationCoordinate, initialRegion: centerCoordinate});
                 // this.setState({initialRegion: centerCoordinate})
             },
             (error) => console.log(error),
@@ -83,16 +83,32 @@ export default class MyMapView extends React.Component {
         this.setState({distance});
     };
 
+    onPress = () => {
+        const {currentLocationCoordinate, companyLocationCoordinate, initialRegion} = this.state;
+        this.props.onPress({currentLocationCoordinate, companyLocationCoordinate, initialRegion});
+    };
+
 
     render() {
         const {currentLocationCoordinate, companyLocationCoordinate, initialRegion, distance} = this.state;
-        // console.log(currentLocationCoordinate);
         return (
             <View>
-                <View style={styles.titleContainer}>
-                    <Text style={[styles.subtitle, {fontSize: 14, paddingTop: "0.08%", marginBottom: "3%"}]}>{this.props.address}</Text>
-                    {distance && <Text style={[styles.subtitle, {fontSize: 14, paddingTop: "0.08%", marginBottom: "3%"}]}>{distance} km</Text>}
-                </View>
+                    <View style={styles.titleContainer}>
+                        <Text style={[styles.subtitle, {
+                            fontSize: 14,
+                            paddingTop: "0.08%",
+                            marginBottom: "3%"
+                        }]}>{this.props.address}</Text>
+                        {distance &&
+                        <TouchableWithoutFeedback onPress={this.onPress}>
+                            <Text style={[styles.subtitle, {
+                                fontSize: 14,
+                                paddingTop: "0.08%",
+                                marginBottom: "3%"
+                            }]}>{distance} km</Text>
+                        </TouchableWithoutFeedback>
+                        }
+                    </View>
                 <View style={styles.mapContainer}>
                     <MapView
                         initialRegion={initialRegion}
@@ -109,7 +125,9 @@ export default class MyMapView extends React.Component {
                             apikey={GOOGLE_MAPS_API_KEY}
                             strokeWidth={5}
                             strokeColor="#4285f4"
-                            onReady={result => {this.setDistance(result.distance)}}/>
+                            onReady={result => {
+                                this.setDistance(result.distance)
+                            }}/>
                     </MapView>
                 </View>
             </View>

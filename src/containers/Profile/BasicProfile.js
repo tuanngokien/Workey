@@ -97,10 +97,10 @@ export default class BasicProfileContainer extends React.Component {
                         </View>
                         <View style={[styles.rowContainer, {marginVertical: 7}]}>
                             <View style={{flex: 0.33}}>
-                                <Text style={styles.title}>80% PROFILE</Text>
+                                <Text style={styles.title}>82% PROFILE</Text>
                             </View>
                             <View style={{flex: 0.5}}>
-                                <AnimatedProgressBar progress={0.7} width={null} height={6} unfilledColor={"rgba(0,0,0,.15)"}
+                                <AnimatedProgressBar progress={0.82} width={null} height={6} unfilledColor={"rgba(0,0,0,.15)"}
                                                      color={"rgba(0, 138, 216, .7)"} borderColor={"transparent"}/>
                             </View>
                             <View style={{flex: 0.17, flexDirection: "row", justifyContent: "flex-end"}}>
