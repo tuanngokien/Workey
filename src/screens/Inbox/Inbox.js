@@ -1,18 +1,21 @@
 import React from "react";
 import {
-    ScrollView,
     View,
     TouchableOpacity,
     StyleSheet,
     Text,
-    FlatList
+    FlatList,
+    Alert
 } from 'react-native';
 import TopNavigator from "../../components/TopNavigator/TopNavigator"
-import { SearchBar } from "react-native-elements"
+import {SearchBar} from "react-native-elements"
 import Conversations from "../Inbox/data"
-import { Avatar } from "react-native-elements"
-import BaseLandingContainer from "../../containers/BaseLanding"
-// import { FlatList } from "react-native-gesture-handler";
+import {Avatar} from "react-native-elements"
+import BaseLandingContainer from "../../containers/BaseLanding/index"
+import ScrollView from "../../components/ScrollView";
+import ChatConversations from "../../components/Chat/Chat"
+import EIcon from "react-native-vector-icons/Entypo";
+
 
 let styles = StyleSheet.create({
     containerSearchBar: {
@@ -20,7 +23,7 @@ let styles = StyleSheet.create({
         margin: 0,
         padding: 0,
         paddingHorizontal: 5,
-        marginTop:10
+        marginTop: 10
 
     },
     containerNav: {
@@ -38,66 +41,79 @@ let styles = StyleSheet.create({
     containerList: {
         backgroundColor: "white",
         paddingTop: 5,
+        paddingHorizontal: "5%",
+        marginBottom: 70,
     },
-    screen: {
-        paddingBottom: 40
+    header: {
+        marginBottom: 10
     },
-    flexRow: {
-        flexDirection: "row",
-    }
+    icon: {
+        color: "#42b72a",
+        fontSize: 45,
+        position: 'absolute',
+        top: -9,
+        right: -8,
 
+    },
+});
 
-
-})
 class InboxScreen extends React.Component {
-    state = {
-        search: "",
-        conversations: Conversations,
+    constructor(props) {
+        super(props);
+        this.state = {
+            search: "",
+            conversations: Conversations,
+        };
     }
+
+    // state={
+    //     search: "",
+    //     conversations: Conversations,
+    // }
+
 
     updateSearch = search => {
-        this.setState({ search });
+        this.setState({search});
     }
+
     handleMessage(message) {
         if (message.length > 30) {
             let tmp = message.slice(0, 30) + "...";
-            return (
-                <Text>{tmp}</Text>
-            )
-        }
-        else {
-            return (
-                <Text>{message}</Text>
-            )
+            return tmp;
+        } else {
+            return message;
         }
     }
-    renderUser = ({ item }) => {
+
+    tranferChat = (item) => () => {
+        this.props.navigation.navigate('Chat', {item});
+        // Alert.alert("a");
+
+    }
+    renderUser = ({item}) => {
+        const isOnline = true;
         return (
-            <TouchableOpacity style={{ backgroundColor: "white", marginVertical: 0, height: 80 }}>
-                <View style={{ flexDirection: "row", }}>
-                    <View style={{ width: "15%" }}>
+            <TouchableOpacity onPress={this.tranferChat(item.user)}
+                              style={{backgroundColor: "white", marginVertical: 10}}>
+                <View style={{flexDirection: "row",}}>
+                    <View style={{width: "20%"}}>
                         <Avatar
                             rounded
-
-                            source={{
-                                uri:
-                                    'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'
-                            }}
-                            size={50}
-                            containerStyle={{
-                                borderRadius: 100,
-                                borderWidth: 1.5,
-                                borderColor: "white"
-                            }}
+                            source={item.user.avatar}
+                            size={60}
+                        />
+                        <EIcon
+                            name="dot-single"
+                            style={[styles.icon, isOnline === false ? {color: "#b7b7b7"} : {}]}
                         />
                     </View>
-                    <View style={{ width: "65%" }}>
-                        <Text style={{ fontWeight: "400", fontSize: 16, color: "black" }}>{item.user.name}</Text>
+                    <View style={{width: "80%"}}>
+                        <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+                            <Text style={{fontFamily: "Nunito-Bold", fontSize: 15, color: "black"}}>{item.user.name}</Text>
+                            <Text style={{fontFamily: "Nunito-Regular", fontSize: 12, color: "#757575"}}>{item.user.time}</Text>
+                        </View>
                         {/* <Text>{item.messages[item.messages.length -1].text}</Text> */}
-                        {this.handleMessage(item.messages[item.messages.length - 1].text)}
-                    </View>
-                    <View style={{ width: "20%", right: 0, position: "absolute" }}>
-                        <Text>{item.user.time}</Text>
+                        <Text style={{fontFamily: "Nunito-Regular", fontSize: 14, color: "#757575"}}>{item.messages[item.messages.length - 1].text}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -107,38 +123,16 @@ class InboxScreen extends React.Component {
     render() {
 
         return (
-            <ScrollView style={styles.screen}>
-            <BaseLandingContainer>
-                
-                  
-                    <View>
-                        <SearchBar placeholder="Type here..."
-                            onChangeText={this.updateSearch}
-                            platform={"android"}
-                            value={this.state.search}
-                            round={true}
-                            underlineColorAndroid={"#DDE1E4"}
-                            // #DDE1E4
-                            containerStyle={styles.containerSearchBar}
-                            inputContainerStyle={{
-                                backgroundColor: "white",
-                                borderRadius: 20,
-                                marginRight: 10,
-                            }}
-                        />
-                    </View>
-                    </BaseLandingContainer>
-                    <ScrollView style={styles.containerList}>
-                        <FlatList
-                            data={this.state.conversations}
-                            renderItem={this.renderUser}
-                            keyExtractor={(item, index) => item.user.id.toString()}
-                        />
-
-
-                    </ScrollView>
+            <View>
+                <BaseLandingContainer title={"Messages"} style={{height: "auto", borderRadius: 0}} rounded={false}/>
+                <ScrollView style={styles.containerList}>
+                    <FlatList
+                        data={this.state.conversations}
+                        renderItem={this.renderUser}
+                        keyExtractor={(item, index) => item.user.id.toString()}
+                    />
                 </ScrollView>
-            
+            </View>
         );
     }
 }

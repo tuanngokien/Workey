@@ -19,7 +19,7 @@ let styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 17,
         fontSize:20,
-        fontFamily: "FontAwesome",
+        fontFamily: "Nunito-Bold",
         color : "black",
         
     },
@@ -27,10 +27,10 @@ let styles = StyleSheet.create({
         // borderBottomWidth: 1,
         // borderColor: theme.colors.border.base,
         zIndex:2,
-        marginTop:75,
+        marginTop:85,
     },
     email :{
-        fontSize :10,
+        fontSize :13,
         fontFamily:"FontAwesome",
         color :"black",
         alignItems :'center'
@@ -49,15 +49,18 @@ class AvatarUser extends React.Component{
             <View>
             <Avatar
                         rounded
-                        source={{
-                            uri:
-                                'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                        }}
+                        // source={{
+                        //     uri:
+                        //         'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                        // }}
+                        source={require('../../assets/images/avatar/avatar5.jpeg')}
                         size={160}
                         containerStyle={{
                             borderRadius: 100,
-                            borderWidth: 1.5,
-                            borderColor: "white"
+                            borderWidth: 4,
+                            padding:4,
+                            backgroundColor:"white",
+                            borderColor: "#003366"
                         }}
                     />
             </View>
