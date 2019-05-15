@@ -1,13 +1,15 @@
 import React from 'react';
+
 import {View, Text, StatusBar} from 'react-native';
 import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from "./src/screens/Home";
-import InboxScreen from "./src/screens/Inbox";
+import InboxNavigator from "./src/screens/Inbox/index"
 import NotificationScreen from "./src/screens/Notification";
 import SearchScreen from "./src/screens/Search";
 import SettingsScreen from "./src/screens/Settings";
 import Icon from "react-native-vector-icons/Feather";
 import EIcon from "react-native-vector-icons/Entypo";
+import MIcon from "react-native-vector-icons/AntDesign";
 import {TABS, TABBAR_ICONS, MAIN_COLOR} from "./src/constants";
 import {YellowBox} from 'react-native';
 import SignInScreen from "./src/screens/SignIn";
@@ -32,6 +34,7 @@ const TabNavigator = createBottomTabNavigator({
                     <EIcon
                         name="dot-single"
                         style={{color: "#00ADFF", fontSize: 30, position: 'absolute', top: -13, right: -13}}
+
                     />
                 </View>
             )
@@ -45,15 +48,26 @@ const TabNavigator = createBottomTabNavigator({
                     name={TABBAR_ICONS[TABS.Search]}
                     color={tintColor}
                     size={25}
-                    // style={{padding: 12, backgroundColor: MAIN_COLOR, borderRadius: 100}}
                 />
             )
         }),
     },
-    [TABS.Inbox]: InboxScreen,
+    // [TABS.Inbox]: InboxScreen,
+    [TABS.Inbox]: {
+        screen: InboxNavigator,
+        navigationOptions: () => ({
+            tabBarIcon: ({tintColor}) => (
+                <MIcon
+                    name={"message1"}
+                    color={tintColor}
+                    size={25}
+                />
+            )
+        }),
+    },
     [TABS.Settings]: SettingsScreen,
 }, {
-    initialRouteName: TABS.Notification,
+    initialRouteName: TABS.Inbox,
     defaultNavigationOptions: ({navigation}) => ({
         tabBarIcon: ({focused, tintColor}) => {
             const {routeName} = navigation.state;
