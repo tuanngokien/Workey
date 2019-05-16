@@ -27,8 +27,8 @@ export function emailSignUp(firstName, lastName, username, password) {
                     let user = firebaseUserCredential.user;
                     user.updateProfile(profile).then(() => {
                             firebaseUserCredential.user.reload().then(() => {
-                                const {email} = user;
-                                signUpUser({email, ...profile});
+                                const {uid, email} = user;
+                                signUpUser({uid, email, ...profile});
                             });
                     }).catch((err) => {
                         console.log(err);
