@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, TouchableWithoutFeedback, StyleSheet} from "react-native";
+import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 import {DEVICE_HEIGHT, DEVICE_WIDTH} from "../../constants";
 
 
@@ -29,13 +29,23 @@ const styles = StyleSheet.create({
 });
 
 export default class ApplyButton extends React.Component {
+    state = {
+        applied: false,
+    };
+
+    onPress = () => {
+        let {applied} = this.state;
+        this.setState({applied: !applied})
+    };
+
     render() {
+        let {applied} = this.state;
         return (
-            <TouchableWithoutFeedback>
+            <TouchableOpacity onPress={this.onPress}>
                 <View style={styles.button}>
-                    <Text style={styles.text}>APPLY THIS JOB</Text>
+                    <Text style={styles.text}>{!applied ? "APPLY THIS JOB" : "APPLIED SUCCESSFULLY"}</Text>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
 
         )
     }

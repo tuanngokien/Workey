@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, StyleSheet, Image, View, FlatList, TouchableWithoutFeedback} from "react-native";
+import {Text, StyleSheet, Image, View, FlatList, TouchableOpacity} from "react-native";
 import TabView from "../../components/TabView";
 import {DEVICE_HEIGHT, DEVICE_WIDTH} from "../../constants";
 import {ColoredDivider, Divider} from "../../components/Divider";
@@ -101,9 +101,9 @@ export default class SearchFilterContainer extends React.Component {
                             chartTitle={"Degree Requirement"} defaultValue={2}/>
                 </View>
                 <View style={styles.iconContainer}>
-                    <TouchableWithoutFeedback>
-                        <Icon name={"search"} style={styles.icon} onPress={this.props.onSubmit}/>
-                    </TouchableWithoutFeedback>
+                    <TouchableOpacity onPress={this.props.onSubmit}>
+                        <Icon name={"search"} style={styles.icon}/>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
