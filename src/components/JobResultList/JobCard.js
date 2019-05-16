@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from "react-native";
+import {View, Text, StyleSheet, Image, TouchableOpacity} from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import MIcon from "react-native-vector-icons/MaterialIcons";
 import BookmarkButton from "../BookmarkButton";
@@ -65,9 +65,9 @@ const styles = StyleSheet.create({
 
 class JobCard extends React.Component {
     render() {
-        const {is_bookmarked, title, employer, logo, description, salary, type, experience, onPress} = this.props;
+        const {id, is_bookmarked, title, employer, logo, description, salary, type, experience, onPress} = this.props;
         return (
-            <TouchableWithoutFeedback onPress={onPress}>
+            <TouchableOpacity onPress={() => onPress(id)}>
                 <View style={styles.card}>
                     <View style={styles.cardHeader}>
                         <View style={{flex: 0.3, justifyContent: "center", alignItems: "center"}}>
@@ -107,7 +107,7 @@ class JobCard extends React.Component {
                         </View>
                     </View>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
         );
     }
 }

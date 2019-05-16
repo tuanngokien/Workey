@@ -4,11 +4,58 @@ import PayPalLogo from "../../assets/images/logo/paypal.png";
 import DropboxLogo from "../../assets/images/logo/dropbox.png";
 import SpotifyLogo from "../../assets/images/logo/spotify.png";
 import AmazonLogo from "../../assets/images/logo/amazon.png";
+import LinkedInBanner from "../../assets/images/banner/3.jpg";
+import LinkedInLogo from "../../assets/images/logo/linkedin.png";
+import ChromeBanner from "../../assets/images/banner/4.jpg";
+import ChromeLogo from "../../assets/images/logo/chrome.png";
+import FoursquareBanner from "../../assets/images/banner/5.jpg";
+import FoursquareLogo from "../../assets/images/logo/foursquare.png";
+import XingBanner from "../../assets/images/banner/7.jpg";
+import XingLogo from "../../assets/images/logo/xing.png";
+import VKBanner from "../../assets/images/banner/6.jpg";
+import VKLogo from "../../assets/images/logo/vk.png";
 
 export default Data = {
-    "suggestions" : [],
-    "results": [
+    suggestions: [
         {
+            id: 6,
+            banner: LinkedInBanner,
+            logo: LinkedInLogo,
+            title: "Android Developer",
+            subtitle: "LinkedIn"
+        },
+        {
+            id: 7,
+            banner: ChromeBanner,
+            logo: ChromeLogo,
+            title: "VR Sales",
+            subtitle: "Google"
+        },
+        {
+            id: 8,
+            banner: FoursquareBanner,
+            logo: FoursquareLogo,
+            title: "Geographic Analyst",
+            subtitle: "Foursquare"
+        },
+        {
+            id: 9,
+            banner: XingBanner,
+            logo: XingLogo,
+            title: "Ophthalmic Nurse",
+            subtitle: "American Eye Center"
+        },
+        {
+            id: 10,
+            banner: VKBanner,
+            logo: VKLogo,
+            title: "English Teacher",
+            subtitle: "VUS - The English Center"
+        },
+    ],
+    results: [
+        {
+            id: 1,
             is_bookmarked: false,
             title: "UI / UX Developer",
             employer: "Google",
@@ -19,6 +66,7 @@ export default Data = {
             experience: "3-4 years",
         },
         {
+            id: 2,
             is_bookmarked: true,
             title: "IT Systems Supervisor",
             employer: "Shopee",
@@ -29,6 +77,7 @@ export default Data = {
             experience: "9-10 years",
         },
         {
+            id: 3,
             is_bookmarked: false,
             title: "IT Tester",
             employer: "Amazon",
@@ -39,6 +88,7 @@ export default Data = {
             experience: "1-2 years",
         },
         {
+            id: 4,
             is_bookmarked: true,
             title: "C# Developer",
             employer: "Dropbox",
@@ -49,6 +99,7 @@ export default Data = {
             experience: "3-4 years",
         },
         {
+            id: 5,
             is_bookmarked: false,
             title: "Lead Software Engineer",
             employer: "Paypal",

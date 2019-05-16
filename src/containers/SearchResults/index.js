@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
 
 class SearchResultsContainer extends React.Component {
     render() {
+        const {onItemPress} = this.props;
         return (
             <ScrollView style={styles.scrollView}>
                 <View>
@@ -28,7 +29,7 @@ class SearchResultsContainer extends React.Component {
                         paddingBottom: 0,
                         paddingTop: "2%"
                     }]}>Suggestions</Text>
-                    <JobSuggestionsCarousel/>
+                    <JobSuggestionsCarousel data={Data.suggestions} onItemPress={onItemPress}/>
                 </View>
                 <View>
                     <View style={styles.resultTitleContainer}>
@@ -39,7 +40,7 @@ class SearchResultsContainer extends React.Component {
                     <View style={styles.resultTitleContainer}>
                         <Text style={[titleStyles.subtitleContainer, {color: "#757575", fontSize: 12, paddingTop: 0}]}>All IT Developer jobs</Text>
                     </View>
-                    <JobResultList onItemPress={this.props.onItemPress} data={Data.results}/>
+                    <JobResultList onItemPress={onItemPress} data={Data.results}/>
                 </View>
             </ScrollView>
         )

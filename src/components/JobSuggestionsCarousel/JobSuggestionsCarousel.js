@@ -17,14 +17,16 @@ const styles = StyleSheet.create({
 
 class JobSuggestionsCarousel extends React.Component {
     state = {
-        data: Data,
         activeSlideIndex: 0,
     };
 
-    _renderItem({item, index}) {
+    renderItem = ({item, index}) => {
         return (
-            <JobCard {...item}/>
+            <JobCard {...item} onPress={this.props.onItemPress}/>
         );
+    }
+
+    componentDidMount(){
     }
 
     handleChangeSlide = (index) => {
@@ -32,7 +34,8 @@ class JobSuggestionsCarousel extends React.Component {
     };
 
     render() {
-        const {data, activeSlideIndex} = this.state;
+        const {activeSlideIndex} = this.state;
+        const {data} = this.props;
         return (
             <View style={{height: 190}}>
                 <Carousel
@@ -42,7 +45,7 @@ class JobSuggestionsCarousel extends React.Component {
                     layout={'default'}
                     data={data}
                     activeSlideAlignment={"start"}
-                    renderItem={this._renderItem}
+                    renderItem={this.renderItem}
                     sliderWidth={DEVICE_WIDTH}
                     itemWidth={ViewWidth * 0.85}
                     inactiveSlideScale={1}
