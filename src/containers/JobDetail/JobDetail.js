@@ -91,7 +91,8 @@ const TinyCard = ({iconName, number, title, style}) => {
 
 export default class JobDetailContainer extends React.Component {
     render() {
-        const {cover, logo, title, employer, createdAt, viewCount, rating, description, responsibilities, qualifications, address} = Data;
+        const {id} = this.props;
+        const {cover, logo, title, employer, createdAt, viewCount, rating, description, responsibilities, qualifications, address} = Data.find(d => d.id === id);
         return (
             <ScrollView style={{backgroundColor: "#ffffff"}}>
                 <SimpleTopNavigator title={""} coverSource={cover} rightIconName={"md-share"}

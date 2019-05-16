@@ -13,7 +13,7 @@ const RootStack = createStackNavigator(
         [SHOW_FULL_MAP]: MapScreen,
     },
     {
-        initialRouteName: SEARCH_FILTER_SCREEN,
+        initialRouteName: SEARCH_RESULT_SCREEN,
         defaultNavigationOptions: {
             header: null
         }

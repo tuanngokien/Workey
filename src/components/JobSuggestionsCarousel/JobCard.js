@@ -1,5 +1,5 @@
 import React from "react"
-import {View, Text, StyleSheet, ImageBackground, Image} from "react-native";
+import {View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity} from "react-native";
 import {DEVICE_WIDTH} from "../../constants";
 
 const ViewWidth = DEVICE_WIDTH * 0.9;
@@ -39,21 +39,24 @@ const styles = StyleSheet.create({
 
 export default class JobCard extends React.Component {
     render() {
-        const {banner, logo, title, subtitle} = this.props;
+        const {id, banner, logo, title, subtitle, onPress} = this.props;
         return (
-            <ImageBackground source={banner} style={styles.imageBackground} imageStyle={{borderRadius: 6}}>
-                <View style={styles.overlayContainer}>
-                    <View style={styles.jobInfoContainer}>
-                        <View>
-                            <Image source={logo} style={styles.brandLogo}/>
-                        </View>
-                        <View>
-                            <Text style={styles.title}>{title}</Text>
-                            <Text style={styles.subtitle}>{subtitle}</Text>
+            <TouchableOpacity onPress={() => onPress(id)}>
+                <ImageBackground source={banner} style={styles.imageBackground} imageStyle={{borderRadius: 6}}>
+                    <View style={styles.overlayContainer}>
+                        <View style={styles.jobInfoContainer}>
+                            <View>
+                                <Image source={logo} style={styles.brandLogo}/>
+                            </View>
+                            <View>
+                                <Text style={styles.title}>{title}</Text>
+                                <Text style={styles.subtitle}>{subtitle}</Text>
+                            </View>
                         </View>
                     </View>
-                </View>
-            </ImageBackground>
+                </ImageBackground>
+            </TouchableOpacity>
+
         )
     }
 }

@@ -10,8 +10,8 @@ class SearchResultScreen extends React.Component {
         this.props.navigation.goBack()
     };
 
-    onItemPress = () => {
-        this.props.navigation.navigate(JOB_DETAIL_SCREEN)
+    onItemPress = (id) => {
+        this.props.navigation.navigate(JOB_DETAIL_SCREEN, {id})
     };
 
     render() {

@@ -67,7 +67,7 @@ const TabNavigator = createBottomTabNavigator({
     },
     [TABS.Settings]: SettingsScreen,
 }, {
-    initialRouteName: TABS.Inbox,
+    initialRouteName: TABS.Search,
     defaultNavigationOptions: ({navigation}) => ({
         tabBarIcon: ({focused, tintColor}) => {
             const {routeName} = navigation.state;
@@ -90,8 +90,6 @@ const TabNavigator = createBottomTabNavigator({
 });
 
 const MainContainer = createAppContainer(TabNavigator);
-var SQLite = require('react-native-sqlite-storage');
-export const db = SQLite.openDatabase({name:"user",createFromLocation:"~workey.db"});
 
 class App extends React.Component {
     componentDidMount(){

@@ -32,12 +32,13 @@ class JobDetail extends React.Component {
     };
 
     render() {
+        const id = this.props.navigation.getParam("id");
         return (
             <View>
                 <View style={styles.navContainer}>
                     <Navigator title={""} rightIconName={"md-share"} onBack={this.onBack}/>
                 </View>
-                <JobDetailContainer renderFull={this.renderFull}/>
+                <JobDetailContainer renderFull={this.renderFull} id={id}/>
                 <View style={styles.applyButtonContainer}>
                     <ApplyButton/>
                 </View>
