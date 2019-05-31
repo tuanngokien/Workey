@@ -1,6 +1,6 @@
 # Workey
 
-Ứng dụng tìm việc làm
+Ứng dụng tìm việc làm cho những sinh viên thất nghiệp như mình
 
 ### Công nghệ sử dụng
 
