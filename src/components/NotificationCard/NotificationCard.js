@@ -38,7 +38,7 @@ export default class NotificationCard extends React.Component {
     render() {
         const {sender, message, createdAt, isOnline} = this.props;
         return (
-            <TouchableWithoutFeedback onPress={this.props.navigation.navigate(JOB_DETAIL_SCREEN, {id})}>
+            <TouchableWithoutFeedback onPress={() => this.props.onPress(1)}>
                 <View style={[styles.rowContainer, {marginBottom: 10}]}>
                     <View style={{flex: 0.2}}>
                         <Image source={{uri: sender.photoURL}} style={styles.avatar}/>

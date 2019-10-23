@@ -63,11 +63,11 @@ export default class NotificationContainer extends React.Component {
             <ScrollView scrollViewStyle={styles.scrollView} style={{marginBottom: 70}}>
                 <View style={styles.container}>
                     <Text style={styles.title}>Today</Text>
-                    {todayNotifications.map((notification) => <NotificationCard {...notification} key={notification.id}/>)}
+                    {todayNotifications.map((notification) => <NotificationCard {...notification} key={notification.id} onPress={this.props.onCardPress}/>)}
                 </View>
                 <View style={styles.container}>
                     <Text style={styles.title}>Yesterday</Text>
-                    {yesterdayNotifications.map((notification) => <NotificationCard {...notification} key={notification.id}/>)}
+                    {yesterdayNotifications.map((notification) => <NotificationCard {...notification} key={notification.id} onPress={this.props.onCardPress}/>)}
                 </View>
             </ScrollView>
         )
