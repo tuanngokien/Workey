@@ -45,7 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new ReactNativeYouTube(),
             new RNGoogleSigninPackage(),
-            new FBSDKPackage(mCallbackManager),
+            new FBSDKPackage(),
             new RNFirebasePackage(),
             new RNFirebaseAuthPackage(),
             new RNFirebaseFirestorePackage(),
