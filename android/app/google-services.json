@@ -1,35 +1,94 @@
 {
   "project_info": {
-    "project_number": "588690593548",
-    "firebase_url": "https://uetworkey-c3e23.firebaseio.com",
-    "project_id": "uetworkey-c3e23",
-    "storage_bucket": "uetworkey-c3e23.appspot.com"
+    "project_number": "426000576581",
+    "firebase_url": "https://rising-amphora-235707.firebaseio.com",
+    "project_id": "rising-amphora-235707",
+    "storage_bucket": "rising-amphora-235707.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:588690593548:android:e9ba19baf8b5446db71b29",
+        "mobilesdk_app_id": "1:426000576581:android:d54eac2b02641809",
         "android_client_info": {
-          "package_name": "com.workey"
+          "package_name": "com.beecost.assistance.shopee"
         }
       },
       "oauth_client": [
         {
-          "client_id": "588690593548-7kov24o9e8lqtbauccugp4cirpd4ehsa.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "426000576581-rd0c3e5frtsidbm09p6mgu6d7e3bnagp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beecost.assistance.shopee",
+            "certificate_hash": "6fd4488bdcc41e3ec75782a51508061624dd9d8d"
+          }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDX8K4pcUnn-YTLPU54lQeaYT_FeJSz904"
+          "current_key": "AIzaSyAC5YXL66g_jFfu40oHhHiK1r7sUhLiv2Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "588690593548-7kov24o9e8lqtbauccugp4cirpd4ehsa.apps.googleusercontent.com",
+              "client_id": "426000576581-sgtsc65n9k8m9eekjil26t8hri3pmvt2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "426000576581-e5vij3vqsefeqhfiokkpokg325n3beif.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.beecost.assistance.shopee"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426000576581:android:34c2fcbfc966e0b7",
+        "android_client_info": {
+          "package_name": "com.workey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426000576581-o86sirs26pmrks37tm53295sa139km4d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.workey",
+            "certificate_hash": "8e85dffc5cd619a59e6d53f6bd61ae723d020ced"
+          }
+        },
+        {
+          "client_id": "426000576581-5osvl85ub10qpd67r7ev6leb3docithj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.workey",
+            "certificate_hash": "01e9b601543bc966076d2d595ab141ee583a63a1"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC5YXL66g_jFfu40oHhHiK1r7sUhLiv2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426000576581-sgtsc65n9k8m9eekjil26t8hri3pmvt2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "426000576581-e5vij3vqsefeqhfiokkpokg325n3beif.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.beecost.assistance.shopee"
+              }
             }
           ]
         }

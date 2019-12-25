@@ -9,7 +9,7 @@ export function googleLogin(isNewUser) {
         try {
             // add any configuration settings here:
             await GoogleSignin.configure({
-                webClientId: "588690593548-7kov24o9e8lqtbauccugp4cirpd4ehsa.apps.googleusercontent.com",
+                webClientId: "426000576581-0o4c24jbbcmi9mkiqs1kh87p50ki5f7n.apps.googleusercontent.com",
             });
             await GoogleSignin.signOut();
             const data = await GoogleSignin.signIn();
