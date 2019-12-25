@@ -2,6 +2,7 @@ import React from "react";
 import {View, StyleSheet, Text, TouchableWithoutFeedback, Image} from "react-native";
 import EIcon from "react-native-vector-icons/Entypo";
 import {formatAMPM} from "../../utils";
+import {JOB_DETAIL_SCREEN} from "../../screens/Search/Tabs";
 
 const styles = StyleSheet.create({
     rowContainer: {
@@ -37,7 +38,7 @@ export default class NotificationCard extends React.Component {
     render() {
         const {sender, message, createdAt, isOnline} = this.props;
         return (
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={this.props.navigation.navigate(JOB_DETAIL_SCREEN, {id})}>
                 <View style={[styles.rowContainer, {marginBottom: 10}]}>
                     <View style={{flex: 0.2}}>
                         <Image source={{uri: sender.photoURL}} style={styles.avatar}/>
