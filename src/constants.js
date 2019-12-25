@@ -21,5 +21,5 @@ export const DEVICE_HEIGHT = Dimensions.get('window').height;
 export const MAIN_COLOR = "#07333C";
 export const YOUTUBE_API_KEY = "AIzaSyAC5YXL66g_jFfu40oHhHiK1r7sUhLiv2Q";
 // export const GOOGLE_MAPS_API_KEY = "AIzaSyAC5YXL66g_jFfu40oHhHiK1r7sUhLiv2Q";
-export const GOOGLE_MAPS_API_KEY = "AIzaSyCH1IfUwf27yKJlDwS2eIpUjSuOSVqcifA";
-// export const GOOGLE_MAPS_API_KEY = "AIzaSyAyKF-HG17K9PNqUveRKsY4d55_mfjDzh4";
+// export const GOOGLE_MAPS_API_KEY = "AIzaSyCH1IfUwf27yKJlDwS2eIpUjSuOSVqcifA";
+export const GOOGLE_MAPS_API_KEY = "AIzaSyA-s6woqLsMgf_Y_u8oIA1s-zpKCBDuJ74";
